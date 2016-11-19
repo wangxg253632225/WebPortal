@@ -1,0 +1,16 @@
+package com.model;
+
+import com.demo.common.model.Blog;
+import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+
+/**
+ * Created by xg on 16/11/14.
+ */
+public class MappingKit {
+
+    public static void mapping(ActiveRecordPlugin arp) {
+        arp.addMapping("blog", "id", Blog.class);
+        arp.addMapping("USER_BASIC_INFO","id", UserDao.class); //操作用户dao
+    }
+
+}
