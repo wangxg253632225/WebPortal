@@ -2,6 +2,7 @@ package com.common.config;
 
 
 import com.controller.UserController;
+import com.interceptor.ExceptionInterceptor;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
@@ -26,7 +27,7 @@ public class WebConfig extends JFinalConfig {
      * 配置路由
      */
     public void configRoute(Routes me) {
-        me.add("/user", UserController.class, "/login");	// 第三个参数为该Controller的视图存放路径
+        me.add("/user", UserController.class, "/login");    // 第三个参数为该Controller的视图存放路径
 //        me.add("/blog", BlogController.class);			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
 //        me.add("/user", UserController.class,"/login");  //用户操作controller
 //        me.add("/user", UserController.class,"/login");  //用户操作controller
@@ -57,7 +58,7 @@ public class WebConfig extends JFinalConfig {
      * 配置全局拦截器
      */
     public void configInterceptor(Interceptors me) {
-
+        me.add(new ExceptionInterceptor());
     }
 
     /**

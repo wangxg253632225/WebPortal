@@ -37,9 +37,12 @@ public class UserDao extends UserBasicInfo<UserDao> implements IBean {
      * @return
      */
     public List<UserDao> getUserByUsernameAndPassword(String username, String password) {
+        List<UserDao> userDaoList = new ArrayList<UserDao>();
         String sql = "select * from USER_BASIC_INFO where USERNAME=?  and  PASSWORD=? ";
-        userDao.find(sql,new Object[]{username,password});
-        return null;
+        if(username != null && password != null ){
+            userDaoList = userDao.find(sql,new Object[]{username,password});
+        }
+        return userDaoList;
     }
 
 }
