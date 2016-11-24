@@ -29,6 +29,7 @@ public class WebConfig extends JFinalConfig {
         me.add("/user", UserController.class, "/login");	// 第三个参数为该Controller的视图存放路径
 //        me.add("/blog", BlogController.class);			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
 //        me.add("/user", UserController.class,"/login");  //用户操作controller
+//        me.add("/user", UserController.class,"/login");  //用户操作controller
     }
 
     public static C3p0Plugin createC3p0Plugin() {
