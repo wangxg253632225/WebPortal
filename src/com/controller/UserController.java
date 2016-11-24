@@ -23,6 +23,8 @@ public class UserController extends Controller {
         String username = getPara("username");
         String password = getPara("password");
 
+        String str = "";
+
         List<UserDao> users = UserDao.userDao.getUser(username, password);
         if (users.size() == 0) {
             throw new ServiceException("用户名不存在或密码错误");
