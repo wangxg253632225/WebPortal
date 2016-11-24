@@ -60,7 +60,6 @@ public final class JsonUtils {
 	
 	/**
 	 * 将List<Record>转换为json字符串
-	 * @param models
 	 * @return JsonString
 	 */
 	public static String toJson(List<Record> records) {
@@ -125,7 +124,7 @@ public final class JsonUtils {
 	
 	/**
 	 * 将 Object 转为json字符串
-	 * @param record
+	 * @param object
 	 * @return JsonString
 	 */
 	public static String toJson(Object object) {
