@@ -8,7 +8,9 @@ define(['angular'], function(angular) {
     
     adminList.controller('adminListCtrl', function($scope, $rootScope,$http,$timeout,$location,$filter) {
     	
-    	console.log(adminUrl);
+    	$scope.num = [
+    		{},{},{},{},{},{},{},{},{},{},{}
+    	];
     	
     	$scope.findList = function(){
 	    	$http({
