@@ -45,4 +45,26 @@ public class UserDao extends UserBasicInfo<UserDao> implements IBean {
         return userDaoList;
     }
 
+    public List<UserDao> getUserList(){
+        String sql = "select * from USER_BASIC_INFO " ;
+        List<UserDao> userDaoList = new ArrayList<UserDao>();
+        userDaoList  = userDao.find(sql);
+        return userDaoList;
+    }
+
+    /**
+     * 校验用户是否已经存在
+     * @param username
+     * @return
+     */
+    public int findOneRecord(String username){
+        int count = 0 ;
+        String sql = "select * from USER_BASIC_INFO where USERNAME=?";
+        List<UserDao> lists = userDao.find(sql,new Object[]{username});
+        if(lists != null && lists.size() > 0){
+            count = lists.size();
+        }
+        return count ;
+    }
+
 }

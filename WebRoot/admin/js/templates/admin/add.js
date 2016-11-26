@@ -3,32 +3,27 @@ define(['angular'], function(angular) {
     
     adminAdd.controller('adminAddCtrl', function($scope, $rootScope, $http, $timeout,$location,$filter) {
 	    
+	    $scope.data={"username":null,"password":null};
+	    
 	    $scope.addAdmin = function(){
+	    	console.log($scope.data);
 	    	$http({
 				method: 'POST',
-				url: settlementUrl+"account/my/airplan/orderheader/page",
-				data: $scope.query
+				url: adminUrl+"user/addUser",
+				cache: false,
+    			dataType:"json",
+				data:$scope.data
 			})
 			.success(function(response) {
-				console.log(response);
-				if(response.code === "0000"){
-					$scope.ddHeads = response.data.accounts;
-    				$scope.total = response.data.totalRow;
-				}else{
-					$mdDialog.show(
-						$mdDialog.alert()
-						.title('新增账单')
-						.textContent('异常:' + response.msg + "(" + response.code + ")")
-						.ariaLabel('新增账单')
-						.ok('关闭')
-					);
-				}
+				
 			})
 			.error(function() {
 				console.log("shibai");
 				return;
 			});
 	    };
+	    
+	    
 	    
     });
     
