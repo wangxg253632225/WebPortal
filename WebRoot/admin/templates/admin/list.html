@@ -28,7 +28,7 @@
 					</thead>
 
 					<tbody>
-						<tr ng-repeat="a in num">
+						<tr ng-repeat="user in dataList">
 							<td class="center">
 								<label>
 									<input type="checkbox" class="ace" />
@@ -36,8 +36,8 @@
 								</label>
 							</td>
 
-							<td>admin</td>
-							<td>2016-11-26 12:10:26</td>
+							<td>{{user.USERNAME}}</td>
+							<td>{{user.CREATE_TIME}}</td>
 							<td>
 								<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 									<a class="blue" href="#">
@@ -90,11 +90,11 @@
 						</tr>
 					</tbody>
 				</table>
-				
+
 				<div class="row">
 					<div>
 						<div class="dataTables_paginate paging_bootstrap">
-							<ul class="pagination">
+							<!--<ul class="pagination">
 								<li class="prev disabled">
 									<a href="#">
 										<i class="icon-double-angle-left"></i>
@@ -108,12 +108,23 @@
 								</li>
 								<li>
 									<a href="#">3</a>
-									
+
 								</li>
 								<li class="next">
 									<a href="#"><i class="icon-double-angle-right"></i></a>
 								</li>
+							</ul>-->
+
+							<!-- paging -->
+							<ul class="pagination" style="margin: 0px;">
+								<li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:void(0);" ng-click="p_index()">首页</a></li>
+								<li><a ng-click="Previous()"><span>上一页</span></a></li>
+								<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]"><a href="javascript:void(0);" ng-click="load_page(page)">{{page}}</a></li>
+								<li><a ng-click="Next()"><span>下一页</span></a></li>
+								<li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:void(0);" ng-click="p_last()">尾页</a></li>
 							</ul>
+							<span style="vertical-align: 12px;">  共：{{count}} 条</span>
+
 						</div>
 					</div>
 				</div>

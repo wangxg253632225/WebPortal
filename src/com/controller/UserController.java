@@ -13,6 +13,7 @@ import com.model.UserDao;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -35,13 +36,14 @@ public class UserController extends Controller {
     }
 
     public void getList() {
-        List<UserDao> list = UserDao.userDao.getUserList();
-
-        renderJson(new JsonResult("success", null, "0", list, null));
+        int pageNum = getParaToInt("pageNum", 1);/** 第几页*/
+        int pageSize = getParaToInt("pageSize", 10);/** 页大小*/
+        Map<String,Object> retData = UserDao.userDao.getUserList(pageNum,pageSize);
+        renderJson(new JsonResult("success", null, "0", retData, null));
     }
 
+
     public void addUser() throws Exception {
-//        QueryRequest requst = getRequestObject(QueryRequest.class);
         String username = getPara("username");
         String password = getPara("password");
         if (StrKit.isBlank(username) || StrKit.isBlank(password)) {
@@ -50,24 +52,10 @@ public class UserController extends Controller {
             int count = UserDao.userDao.findOneRecord(username);
             if (count > 0) {
                 renderJson(new JsonResult("fail","0000","1",null,null));
+                return;
             }
+            UserDao.userDao.addUser(username,password);
         }
     }
 
-    /**
-     * 取Request中的数据对象
-     * @param valueType
-     * @return
-     * @throws Exception
-     */
-    protected <T> T getRequestObject(Class<T> valueType) throws Exception {
-        StringBuilder json = new StringBuilder();
-        BufferedReader reader = this.getRequest().getReader();
-        String line = null;
-        while((line = reader.readLine()) != null){
-            json.append(line);
-        }
-        reader.close();
-        return JSONObject.parseObject(json.toString(), valueType);
-    }
 }
