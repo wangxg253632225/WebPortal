@@ -9,20 +9,18 @@ define(['angular'], function(angular) {
 		};
 
 		$scope.addAdmin = function() {
-			console.log($scope.data);
 			$http({
-					method: 'POST',
-					headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-					url: adminUrl + "user/addUser",
-					data: $.param($scope.data)
-				})
-				.success(function(response) {
+				method: 'POST',
+				url: adminUrl + "user/addUser",
+				data: $scope.data
+			})
+			.success(function(response) {
 
-				})
-				.error(function() {
-					console.log("shibai");
-					return;
-				});
+			})
+			.error(function() {
+				console.log("shibai");
+				return;
+			});
 		};
 
 

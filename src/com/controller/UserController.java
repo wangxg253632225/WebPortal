@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.common.result.JsonResult;
+import com.common.util.JsonToMap;
 import com.common.validator.UserValidator;
 import com.exception.ServiceException;
 import com.jfinal.aop.Before;
@@ -10,8 +10,6 @@ import com.jfinal.kit.StrKit;
 import com.jfinal.log.Log;
 import com.model.UserDao;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -35,26 +33,30 @@ public class UserController extends Controller {
         renderJson(new JsonResult("success", null, "0", null, null));
     }
 
-    public void getList() {
-        int pageNum = getParaToInt("pageNum", 1);/** 第几页*/
-        int pageSize = getParaToInt("pageSize", 10);/** 页大小*/
+    public void getList() throws Exception{
+        Map<String,Object> map = JsonToMap.getRequestObject(this.getRequest());
+        int pageNum = (Integer) map.get("pageNum");/** 第几页*/
+        int pageSize = (Integer) map.get("pageSize");/** 页大小*/
         Map<String,Object> retData = UserDao.userDao.getUserList(pageNum,pageSize);
         renderJson(new JsonResult("success", null, "0", retData, null));
     }
 
 
     public void addUser() throws Exception {
-        String username = getPara("username");
-        String password = getPara("password");
+        Map<String,Object> map = JsonToMap.getRequestObject(this.getRequest());
+
+        String username = (String) map.get("username");
+        String password = (String) map.get("password");
         if (StrKit.isBlank(username) || StrKit.isBlank(password)) {
             throw new ServiceException("用户名或密码不能为空");
         } else {
             int count = UserDao.userDao.findOneRecord(username);
             if (count > 0) {
-                renderJson(new JsonResult("fail","0000","1",null,null));
+                renderJson(new JsonResult("fail", "0000", "1", null, null));
                 return;
             }
-            UserDao.userDao.addUser(username,password);
+            UserDao.userDao.addUser(username, password);
+            renderJson(new JsonResult("success", null, "0", null, null));
         }
     }
 

@@ -1,1 +1,1 @@
-var adminUrl = "http://192.168.1.104:8081/";
+var adminUrl = "http://localhost:8081/";

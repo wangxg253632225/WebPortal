@@ -13,8 +13,8 @@ import java.util.Map;
  */
 public class JsonToMap{
 
-    public Map<Object,Object> getRequestObject(HttpServletRequest request) throws Exception {
-        HashMap<Object, Object> data = new HashMap<Object, Object>();
+    public static Map<String,Object> getRequestObject(HttpServletRequest request) throws Exception {
+        HashMap<String, Object> data = new HashMap<String, Object>();
         StringBuilder json = new StringBuilder();
         BufferedReader reader = request.getReader();
         String line = null;
@@ -29,7 +29,7 @@ public class JsonToMap{
         while (it.hasNext())
         {
             String key = String.valueOf(it.next());
-            String value = (String) jsonObject.get(key);
+            Object value = jsonObject.get(key);
             data.put(key, value);
         }
         return data;
