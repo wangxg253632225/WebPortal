@@ -70,25 +70,50 @@ define(['angular'], function(angular) {
 		//分页算法  
 		var calculateIndexes = function(current, length, displayLength) {
 			var indexes = [];
-			var start = Math.round(current - displayLength / 2);
-			var end = Math.floor(current + displayLength / 2);
-			if (start <= 1) {
-				start = 1;
-				end = start + displayLength - 1;
-				if (end >= length - 1) {
-					end = length - 1;
+			var number = Math.floor(displayLength / 2);
+			if(length <= displayLength){
+				for (var i = 1; i <= displayLength; i++) {
+					indexes.push(i);
+				}
+			}else{
+				if(current - 1 <= number){
+					for (var i = 1; i <= displayLength; i++) {
+						indexes.push(i);
+					}
+				}else if(current - 1 > number){
+					if(length - current >= number){
+						var start= current - number;
+						var end = current + number;
+						for (var i = start; i <= end; i++) {
+							indexes.push(i);
+						}
+					}else{
+						var start= length - displayLength+1;
+						for (var i = start; i <= length; i++) {
+							indexes.push(i);
+						}
+					}
 				}
 			}
-			if (end >= length - 1) {
-				end = length;
-				start = end - displayLength+1;
-				if (start <= 1) {
-					start = 1;
-				}
-			}
-			for (var i = start; i <= end; i++) {
-				indexes.push(i);
-			}
+//			var start = Math.round(current - displayLength / 2);
+//			var end = Math.floor(current + displayLength / 2);
+//			if (start <= 1) {
+//				start = 1;
+//				end = start + displayLength - 1;
+//				if (end >= length - 1) {
+//					end = length - 1;
+//				}
+//			}
+//			if (end >= length - 1) {
+//				end = length;
+//				start = end - displayLength+1;
+//				if (start <= 1) {
+//					start = 1;
+//				}
+//			}
+//			for (var i = start; i <= end; i++) {
+//				indexes.push(i);
+//			}
 			return indexes;
 		};
 		
