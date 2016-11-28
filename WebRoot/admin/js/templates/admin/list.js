@@ -71,7 +71,7 @@ define(['angular'], function(angular) {
 		var calculateIndexes = function(current, length, displayLength) {
 			var indexes = [];
 			var number = Math.floor(displayLength / 2);
-			if(length <= displayLength){
+			if(length <= length){
 				for (var i = 1; i <= displayLength; i++) {
 					indexes.push(i);
 				}

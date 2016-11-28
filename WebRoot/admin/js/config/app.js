@@ -54,24 +54,23 @@ define(['angular', 'require', 'ngRoute','cTri','js/config/model'], function(angu
 				$controllerProvider: $controllerProvider
 			};
 			$routeProvider.
-			/** 结算中心首页 */
-			when('/index', {
-				templateUrl: 'templates/index.html',
-				resolve: {
-					keyName: function($q) {
-						var deferred = $q.defer();
-						require(['js/templates/index'], function(controller) {
-							deferred.resolve();
-						});
-						return deferred.promise;
-					}
-				}
-			}).
+			/** 管理员管理首页 */
 			when('/admin/index', {
 					resolve: {
 						keyName: function($q) {
 							var deferred = $q.defer();
 							require(['js/templates/admin/index'], function(controller) {
+								deferred.resolve();
+							});
+							return deferred.promise;
+						}
+					}
+				}).
+			when('/news/index', {
+					resolve: {
+						keyName: function($q) {
+							var deferred = $q.defer();
+							require(['js/templates/news/index'], function(controller) {
 								deferred.resolve();
 							});
 							return deferred.promise;

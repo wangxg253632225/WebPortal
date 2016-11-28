@@ -3,9 +3,6 @@ package com.model;
 import com.jfinal.plugin.activerecord.IBean;
 import com.jfinal.plugin.activerecord.Page;
 import com.model.bean.UserBasicInfo;
-import org.eclipse.jetty.server.Authentication;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;

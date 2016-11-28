@@ -17,15 +17,15 @@ define(['angular'], function(angular) {
 				icon: 'icon-double-angle-right'
 			}]
 		},{
-			name: '文章管理',
-			path: '',
+			name: '新闻中心',
+			path: '/news/index',
 			icon: 'icon-desktop',
 			children: [{
-				name: '文章分类',
-				path: '',
+				name: '新闻分类',
+				path: '/news/cate_list',
 				icon: 'icon-desktop',
 			},{
-				name: '文章管理',
+				name: '新闻管理',
 				path: '',
 				icon: 'icon-desktop'
 			}]

@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.common.result.JsonResult;
-import com.common.util.JsonToMap;
+import com.common.util.JsonMapUtils;
 import com.common.validator.UserValidator;
 import com.exception.ServiceException;
 import com.jfinal.aop.Before;
@@ -34,7 +34,7 @@ public class UserController extends Controller {
     }
 
     public void getList() throws Exception{
-        Map<String,Object> map = JsonToMap.getRequestObject(this.getRequest());
+        Map<String,Object> map = JsonMapUtils.getRequestObject(this.getRequest());
         int pageNum = (Integer) map.get("pageNum");/** 第几页*/
         int pageSize = (Integer) map.get("pageSize");/** 页大小*/
         Map<String,Object> retData = UserDao.userDao.getUserList(pageNum,pageSize);
@@ -43,7 +43,7 @@ public class UserController extends Controller {
 
 
     public void addUser() throws Exception {
-        Map<String,Object> map = JsonToMap.getRequestObject(this.getRequest());
+        Map<String,Object> map = JsonMapUtils.getRequestObject(this.getRequest());
 
         String username = (String) map.get("username");
         String password = (String) map.get("password");

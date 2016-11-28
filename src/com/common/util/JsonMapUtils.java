@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by lizy_java on 2016/11/27.
  */
-public class JsonToMap{
+public class JsonMapUtils {
 
     public static Map<String,Object> getRequestObject(HttpServletRequest request) throws Exception {
         HashMap<String, Object> data = new HashMap<String, Object>();
