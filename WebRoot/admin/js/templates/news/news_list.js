@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
-	var newsCateList = angular.module('newsCateList', []);
+	var newsList = angular.module('newsList', []);
 
-	newsCateList.controller('newsCateListCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter) {
+	newsList.controller('newsListCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter) {
 
 		$scope.dataList = new Array();
 		$scope.findList = function() {
@@ -21,7 +21,11 @@ define(['angular'], function(angular) {
 			});
 		};
 		$scope.findList();
+		
+		$scope.addArticle = function(){
+			$location.path('/news/news_add');
+		}
 
 	});
-	return newsCateList;
+	return newsList;
 });

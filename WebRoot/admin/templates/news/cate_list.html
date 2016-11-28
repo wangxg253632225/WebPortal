@@ -1,7 +1,7 @@
 <div ng-controller="newsCateListCtrl">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="page-header">
+			<div class="page-header clearfix gov_tb_padding">
 				<h1>
 					新闻中心
 					<small>
@@ -9,6 +9,12 @@
 						列表
 					</small>
 				</h1>
+				<div class="btn-group pull-right gov_right">
+					<button class="btn btn-sm btn-purple" ng-click="addArticle();">
+						<i class="icon-plus bigger-125"></i>
+						新增
+					</button>
+				</div>
 			</div>
 
 			<div class="table-responsive">

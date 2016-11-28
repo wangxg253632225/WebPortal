@@ -52,7 +52,7 @@ define(['angular'], function(angular) {
 			if ($scope.p_current == $scope.p_all_page) {
 				return;
 			}
-			$scope.p_current = $scope.p_current + 1;
+			$scope.p_current = $scope.p_all_page;
 			$scope.findList();
 		};
 

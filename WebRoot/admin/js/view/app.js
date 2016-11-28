@@ -26,7 +26,7 @@ define(['angular'], function(angular) {
 				icon: 'icon-desktop',
 			},{
 				name: '新闻管理',
-				path: '',
+				path: '/news/news_list',
 				icon: 'icon-desktop'
 			}]
 		}];

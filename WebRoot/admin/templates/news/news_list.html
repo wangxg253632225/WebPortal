@@ -1,14 +1,20 @@
-<div ng-controller="adminListCtrl">
+<div ng-controller="newsListCtrl">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="page-header">
-				<h1>
-					管理员管理
+			<div class="page-header clearfix gov_tb_padding">
+				<h1 class="gov_left">
+					新闻管理
 					<small>
 						<i class="icon-double-angle-right"></i>
 						列表
 					</small>
 				</h1>
+				<div class="btn-group pull-right gov_right">
+					<button class="btn btn-sm btn-purple" ng-click="addArticle();">
+						<i class="icon-plus bigger-125"></i>
+						新增
+					</button>
+				</div>
 			</div>
 
 			<div class="table-responsive">
@@ -21,38 +27,37 @@
 									<span class="lbl"></span>
 								</label>
 							</th>
-							<th>管理员名称</th>
+							<th>分类名称</th>
+							<th>分类标题</th>
+							<th>关键字</th>
+							<th>说明</th>
 							<th>创建时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<tr ng-repeat="user in dataList">
+						<tr ng-repeat="category in dataList">
 							<td class="center">
 								<label>
 									<input type="checkbox" class="ace" />
 									<span class="lbl"></span>
 								</label>
 							</td>
-
-							<td>{{user.USERNAME}}</td>
-							<td>{{user.CREATE_TIME}}</td>
+							<td>{{category.cate_name}}</td>
+							<td>{{category.cate_title}}</td>
+							<td>{{category.cate_keyword}}</td>
+							<td>{{category.remark}}</td>
+							<td>{{category.create_date}}</td>
 							<td>
 								<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-									<a class="blue" href="#">
-										<i class="icon-zoom-in bigger-130"></i>
-									</a>
-
 									<a class="green" href="#">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
-
 									<a class="red" href="#">
 										<i class="icon-trash bigger-130"></i>
 									</a>
 								</div>
-
 								<div class="visible-xs visible-sm hidden-md hidden-lg">
 									<div class="inline position-relative">
 										<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
@@ -60,14 +65,6 @@
 										</button>
 
 										<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-											<li>
-												<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-													<span class="blue">
-														<i class="icon-zoom-in bigger-120"></i>
-													</span>
-												</a>
-											</li>
-
 											<li>
 												<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
 													<span class="green">
@@ -90,7 +87,6 @@
 						</tr>
 					</tbody>
 				</table>
-
 				<div class="row">
 					<div>
 						<div class="dataTables_paginate paging_bootstrap">
