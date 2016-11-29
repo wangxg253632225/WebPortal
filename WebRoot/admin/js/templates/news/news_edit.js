@@ -39,14 +39,13 @@ define(['angular'], function(angular) {
 				url: adminUrl + "article/getDetail?id="+$routeParams.id
 			})
 			.success(function(response) {
-				console.log(response);
 				if(response.code == "0"){
 					$scope.article.id = response.data.id;
 					$scope.article.cate_id = response.data.cate_id;
 					$scope.article.name = response.data.name;
 					$scope.article.title = response.data.title;
-					$scope.article.author = response.data.id;
-					document.getElementById("content").innerHTML = JSON.parse(response.data.content);
+					$scope.article.author = response.data.author;
+					document.getElementById("content").innerHTML = response.data.content;
 				}
 			})
 			.error(function() {
@@ -58,8 +57,7 @@ define(['angular'], function(angular) {
 		/** 加载新闻数据结束  */
 		/** 更新开始 */
 		$scope.updateArticle = function(){
-			$scope.article.content = JSON.stringify(document.getElementById("content").innerHTML);
-			console.log($scope.article);
+			$scope.article.content = document.getElementById("content").innerHTML;
 			
 			$http({
 				method: 'POST',
@@ -69,7 +67,7 @@ define(['angular'], function(angular) {
 			.success(function(response) {
 				console.log(response);
 				if(response.code == "0"){
-					$scope.article = response.data;
+					$location.path("/news/news_list");
 				}
 			})
 			.error(function() {

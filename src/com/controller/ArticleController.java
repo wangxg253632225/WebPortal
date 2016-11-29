@@ -1,12 +1,14 @@
 package com.controller;
 
 import com.common.result.JsonResult;
+import com.common.util.DesEncryptionUtils;
 import com.common.util.JsonMapUtils;
 import com.jfinal.core.Controller;
 import com.model.ArticleDao;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by lizy_java on 2016/11/29.
@@ -17,15 +19,17 @@ public class ArticleController extends Controller {
         Map<String,Object> map =  new HashMap<String,Object>();
         try{
             map = JsonMapUtils.getRequestObject(this.getRequest());
+            String longText = DesEncryptionUtils.toHexString(DesEncryptionUtils.encrypt((String)map.get("content")));
+            map.put("content",longText);
+
         }catch (Exception e){
+            e.printStackTrace();
             renderJson(new JsonResult("参数的参数有误", null, "1", null, null));
             return;
         }
 
-        String longText = (String)map.get("content");
-
-//        ArticleDao article =  ArticleDao.articleDao.add(map);
-        renderJson(new JsonResult("success", null, "0", null, null));
+        ArticleDao article =  ArticleDao.articleDao.add(map);
+        renderJson(new JsonResult("success", null, "0", article, null));
     }
 
 
@@ -57,6 +61,14 @@ public class ArticleController extends Controller {
             return;
         }
         ArticleDao resulrDao = ArticleDao.articleDao.getDetail(id);
+        try{
+            String content = DesEncryptionUtils.decrypt(resulrDao.getStr("content"));
+            resulrDao.put("content",content);
+        }catch (Exception e){
+            renderJson(new JsonResult("解析文章内容出错", null, "1", null, null));
+            return;
+        }
+
         renderJson(new JsonResult("success", null, "0", resulrDao, null));
     }
 
@@ -64,8 +76,10 @@ public class ArticleController extends Controller {
         Map<String,Object> map =  new HashMap<String,Object>();
         try{
             map = JsonMapUtils.getRequestObject(this.getRequest());
+            String longText = DesEncryptionUtils.toHexString(DesEncryptionUtils.encrypt((String)map.get("content")));
+            map.put("content",longText);
+
         }catch (Exception e){
-            e.printStackTrace();
             renderJson(new JsonResult("参数的参数有误", null, "1", null, null));
             return;
         }
@@ -80,12 +94,11 @@ public class ArticleController extends Controller {
             return;
         }
 
-        int count  = ArticleDao.articleDao.update(map);
-
+        int count = ArticleDao.articleDao.update(map);
         if(count > 0){
             renderJson(new JsonResult("success", null, "0", null, null));
         } else{
-            renderJson(new JsonResult("更新失败", null, "1", null, null));
+            renderJson(new JsonResult("请参入名称", null, "1", null, null));
         }
     }
 }

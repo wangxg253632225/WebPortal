@@ -4,14 +4,15 @@ define(['angular'], function(angular) {
 	adminList.controller('adminListCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter) {
 
 
-		//配置  
-		$scope.count = 0;
-		$scope.p_pernum = 4;
+		$scope.pageSizes = [2,5,10,20];
 		//变量  
-		$scope.p_current = 1;
-		$scope.p_all_page = 0;
+		$scope.pageNum = 1;
+		$scope.totalRow = 0;
+		$scope.pageSize = 5;
+		$scope.totalPage = 0;
+		$scope.firstPage = true;
+		$scope.lastPage = true;
 		$scope.pages = [];
-
 
 		$scope.dataList = new Array();
 		$scope.findList = function() {
@@ -19,17 +20,18 @@ define(['angular'], function(angular) {
 				method: 'POST',
 				url: adminUrl + "user/getList",
 				data:{
-					"pageNum": $scope.p_current,
-					"pageSize": $scope.p_pernum
+					"pageNum": $scope.pageNum,
+					"pageSize": $scope.pageSize
 				}
 			})
 			.success(function(response) {
 				console.log(response);
 				if (response.code == "0") {
 					$scope.dataList = response.data.list;
-					$scope.count = response.data.totalRow;
-					$scope.p_all_page = response.data.totalPage;
-
+					$scope.totalRow = response.data.totalRow;
+					$scope.totalPage = response.data.totalPage;
+					$scope.firstPage = response.data.firstPage;
+					$scope.lastPage = response.data.lastPage;
 					reloadPno();
 				}
 			})
@@ -38,41 +40,25 @@ define(['angular'], function(angular) {
 				return;
 			});
 		};
-		
-		//上一页
-		$scope.Previous = function() {
-			if ($scope.p_current == 1) {
-				return;
-			}
-			$scope.p_current = $scope.p_current - 1;
-			$scope.findList();
-		};
-		//下一页
-		$scope.Next = function() {
-			if ($scope.p_current == $scope.p_all_page) {
-				return;
-			}
-			$scope.p_current = $scope.p_all_page;
-			$scope.findList();
-		};
+		$scope.findList();
 
-		//加载某一页  
+		//加载选中页
 		$scope.load_page = function(page) {
-			$scope.p_current = page;
+			$scope.pageNum = page;
 			$scope.findList();
 		};
 
 		//初始化页码  
 		var reloadPno = function() {
-			$scope.pages = calculateIndexes($scope.p_current, $scope.p_all_page, 5);
+			$scope.pages = calculateIndexes($scope.pageNum, $scope.totalPage, 5);
 		};
 
 		//分页算法  
-		var calculateIndexes = function(current, length, displayLength) {
+		var calculateIndexes = function(current, totalPage, displayLength) {
 			var indexes = [];
 			var number = Math.floor(displayLength / 2);
-			if(length <= length){
-				for (var i = 1; i <= displayLength; i++) {
+			if(totalPage <= displayLength){
+				for (var i = 1; i <= totalPage; i++) {
 					indexes.push(i);
 				}
 			}else{
@@ -81,50 +67,26 @@ define(['angular'], function(angular) {
 						indexes.push(i);
 					}
 				}else if(current - 1 > number){
-					if(length - current >= number){
+					if(totalPage - current >= number){
 						var start= current - number;
 						var end = current + number;
 						for (var i = start; i <= end; i++) {
 							indexes.push(i);
 						}
 					}else{
-						var start= length - displayLength+1;
-						for (var i = start; i <= length; i++) {
+						var start= totalPage - displayLength+1;
+						for (var i = start; i <= totalPage; i++) {
 							indexes.push(i);
 						}
 					}
 				}
 			}
-//			var start = Math.round(current - displayLength / 2);
-//			var end = Math.floor(current + displayLength / 2);
-//			if (start <= 1) {
-//				start = 1;
-//				end = start + displayLength - 1;
-//				if (end >= length - 1) {
-//					end = length - 1;
-//				}
-//			}
-//			if (end >= length - 1) {
-//				end = length;
-//				start = end - displayLength+1;
-//				if (start <= 1) {
-//					start = 1;
-//				}
-//			}
-//			for (var i = start; i <= end; i++) {
-//				indexes.push(i);
-//			}
 			return indexes;
 		};
 		
-		$scope.findList();
-		
-		$scope.pageSize = 5;
-		$scope.pageSizes = [2,5,10,20];
-		
 		$scope.$watch('pageSize',function(newSize,oldSize,c){
-			$scope.p_pernum = newSize;
-			$scope.p_current = 1;
+			$scope.pageSize = newSize;
+			$scope.pageNum = 1;
 			$scope.findList();
 		});
 	});

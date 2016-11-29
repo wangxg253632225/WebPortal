@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.common.result.JsonResult;
+import com.common.util.DesEncryptionUtils;
 import com.common.util.JsonMapUtils;
 import com.common.validator.UserValidator;
 import com.exception.ServiceException;
@@ -10,6 +11,7 @@ import com.jfinal.kit.StrKit;
 import com.jfinal.log.Log;
 import com.model.UserDao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +36,13 @@ public class UserController extends Controller {
     }
 
     public void getList() throws Exception{
-        Map<String,Object> map = JsonMapUtils.getRequestObject(this.getRequest());
+        Map<String,Object> map =  new HashMap<String,Object>();
+        try{
+            map = JsonMapUtils.getRequestObject(this.getRequest());
+        }catch (Exception e){
+            renderJson(new JsonResult("参数的参数有误", null, "1", null, null));
+            return;
+        }
         int pageNum = (Integer) map.get("pageNum");/** 第几页*/
         int pageSize = (Integer) map.get("pageSize");/** 页大小*/
         Map<String,Object> retData = UserDao.userDao.getUserList(pageNum,pageSize);

@@ -64,16 +64,17 @@
 				</table>
 				<div class="row">
 					<div>
-						<div class="dataTables_paginate paging_bootstrap">
+						<div class="dataTables_paginate paging_bootstrap gov_lf_padd12">
+							<span style="margin-right:10px;"> 共：<font color="red">{{totalRow}}</font> 条数据</span>
 							<ul class="pagination" style="margin: 0px;">
-								<li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:void(0);" ng-click="load_page(1)">首页</a></li>
-								<li><a href="javascript:void(0);" ng-click="Previous()"><span><i class="icon-double-angle-left"></i></span></a></li>
-								<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]"><a href="javascript:void(0);" ng-click="load_page(page)">{{page}}</a></li>
-								<li><a href="javascript:void(0);" ng-click="Next()"><span><i class="icon-double-angle-right"></i></span></a></li>
-								<li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:void(0);" ng-click="load_page(p_all_page)">尾页</a></li>
-								<li><select ng-model="pageSize" ng-options="x for x in pageSizes" ></select></li>
+								<li ng-class="{true:'disabled'}[firstPage]"><a href="javascript:void(0);" ng-click="firstPage?null:load_page(1)">首页</a></li>
+								<li ng-class="{true:'disabled'}[firstPage]"><a href="javascript:void(0);" ng-click="firstPage?null:load_page(pageNum-1)"><span><i class="icon-double-angle-left"></i></span></a></li>
+								<li ng-repeat="page in pages" ng-class="{true:'active'}[pageNum==page]"><a href="javascript:void(0);" ng-click="load_page(page)">{{page}}</a></li>
+								<li  ng-class="{true:'disabled'}[lastPage]"><a href="javascript:void(0);" ng-click="lastPage?null:load_page(pageNum+1)"><span><i class="icon-double-angle-right"></i></span></a></li>
+								<li ng-class="{true:'disabled'}[lastPage]"><a href="javascript:void(0);" ng-click="lastPage?null:load_page(totalPage)">尾页</a></li>
+								<li><select style="margin-left:5px;height: 32px;" ng-model="pageSize" ng-options="x for x in pageSizes" ></select></li>
 							</ul>
-							<span style="vertical-align: 12px;">  共：{{count}} 条</span>
+							<span style="margin-right:5px;">共：<font color="red">{{pageNum}}</font>/{{totalPage}} 条</span>
 						</div>
 					</div>
 				</div>

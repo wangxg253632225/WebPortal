@@ -34,7 +34,7 @@ define(['angular'], function(angular) {
 		/** 查询出新闻的分类结束 */
 		
 		$scope.addArticle = function(){
-			$scope.param.content = JSON.stringify(document.getElementById("editor1").innerHTML);
+			$scope.param.content = document.getElementById("editor1").innerHTML;
 			$http({
 				method: 'POST',
 				url: adminUrl + "article/add",
@@ -42,7 +42,7 @@ define(['angular'], function(angular) {
 			})
 			.success(function(response) {
 				if(response.code == "0"){
-					document.getElementById("htmlAAA").innerHTML = response.content;
+					$location.path("/news/news_list");
 				}
 			})
 			.error(function() {
