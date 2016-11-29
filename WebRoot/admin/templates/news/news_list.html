@@ -27,61 +27,36 @@
 									<span class="lbl"></span>
 								</label>
 							</th>
-							<th>分类名称</th>
-							<th>分类标题</th>
-							<th>关键字</th>
-							<th>说明</th>
-							<th>创建时间</th>
+							<th>新闻名称</th>
+							<th>新闻分类</th>
+							<th>新闻标题</th>
+							<th>作者</th>
+							<th>是否置顶</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<tr ng-repeat="category in dataList">
+						<tr ng-repeat="article in dataList">
 							<td class="center">
 								<label>
 									<input type="checkbox" class="ace" />
 									<span class="lbl"></span>
 								</label>
 							</td>
-							<td>{{category.cate_name}}</td>
-							<td>{{category.cate_title}}</td>
-							<td>{{category.cate_keyword}}</td>
-							<td>{{category.remark}}</td>
-							<td>{{category.create_date}}</td>
+							<td>{{article.name}}</td>
+							<td>{{article.cate_name}}</td>
+							<td>{{article.title}}</td>
+							<td>{{article.author}}</td>
+							<td>{{article.is_top == 1?'是':"否"}}</td>
 							<td>
 								<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-									<a class="green" href="#">
+									<a class="green"  ng-click="goEdit(article.id);">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 									<a class="red" href="#">
 										<i class="icon-trash bigger-130"></i>
 									</a>
-								</div>
-								<div class="visible-xs visible-sm hidden-md hidden-lg">
-									<div class="inline position-relative">
-										<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-											<i class="icon-caret-down icon-only bigger-120"></i>
-										</button>
-
-										<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-											<li>
-												<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-													<span class="green">
-														<i class="icon-edit bigger-120"></i>
-													</span>
-												</a>
-											</li>
-
-											<li>
-												<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-													<span class="red">
-														<i class="icon-trash bigger-120"></i>
-													</span>
-												</a>
-											</li>
-										</ul>
-									</div>
 								</div>
 							</td>
 						</tr>

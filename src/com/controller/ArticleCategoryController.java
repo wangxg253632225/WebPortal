@@ -37,6 +37,7 @@ public class ArticleCategoryController extends Controller {
         try{
             map = JsonMapUtils.getRequestObject(this.getRequest());
         }catch (Exception e){
+            e.printStackTrace();
             renderJson(new JsonResult("参入的参数有误", null, "1", null, null));
         }
 

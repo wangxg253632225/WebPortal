@@ -7,12 +7,16 @@ define(['angular'], function(angular) {
 		$scope.findList = function() {
 			$http({
 				method: 'POST',
-				url: adminUrl + "articleCategory/getList?type=news"
+				url: adminUrl + "article/getList?type=news",
+				data:{
+					pageNum:1,
+					pageSize:10
+				}
 			})
 			.success(function(response) {
 				console.log(response);
 				if (response.code == "0") {
-					$scope.dataList = response.data;
+					$scope.dataList = response.data.list;
 				}
 			})
 			.error(function() {
@@ -24,6 +28,10 @@ define(['angular'], function(angular) {
 		
 		$scope.addArticle = function(){
 			$location.path('/news/news_add');
+		}
+		
+		$scope.goEdit = function(id){
+			$location.url('/news/news_edit?id='+id);
 		}
 
 	});

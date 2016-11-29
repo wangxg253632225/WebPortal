@@ -29,6 +29,19 @@ define(['angular'], function(angular) {
 				path: '/news/news_list',
 				icon: 'icon-desktop'
 			}]
+		},{
+			name: '通知公告',
+			path: '/news/index',
+			icon: 'icon-desktop',
+			children: [{
+				name: '通知公告分类',
+				path: '/news/cate_list',
+				icon: 'icon-desktop',
+			},{
+				name: '通知公告管理',
+				path: '/news/news_list',
+				icon: 'icon-desktop'
+			}]
 		}];
 
 		$scope.onOpenMenuOrHref = function(item) {

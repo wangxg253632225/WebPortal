@@ -1,0 +1,15 @@
+<div class="row">
+	<div>
+		<div class="dataTables_paginate paging_bootstrap">
+			<ul class="pagination" style="margin: 0px;">
+				<li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:void(0);" ng-click="load_page(1)">首页</a></li>
+				<li><a href="javascript:void(0);" ng-click="Previous()"><span><i class="icon-double-angle-left"></i></span></a></li>
+				<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]"><a href="javascript:void(0);" ng-click="load_page(page)">{{page}}</a></li>
+				<li><a href="javascript:void(0);" ng-click="Next()"><span><i class="icon-double-angle-right"></i></span></a></li>
+				<li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:void(0);" ng-click="load_page(p_all_page)">尾页</a></li>
+				<li><select ng-model="pageSize" ng-options="x for x in pageSizes" ></select></li>
+			</ul>
+			<span style="vertical-align: 12px;">  共：{{count}} 条</span>
+		</div>
+	</div>
+</div>
