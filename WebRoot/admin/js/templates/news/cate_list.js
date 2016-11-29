@@ -21,6 +21,16 @@ define(['angular'], function(angular) {
 			});
 		};
 		$scope.findList();
+		
+		$scope.addCate = function(){
+			$location.path('/news/cate_add');
+		}
+		
+		/*编辑分类*/
+		$scope.goEdit = function(id){
+			console.log(id);
+			$location.url('/news/cate_edit?id='+id);
+		}
 
 	});
 	return newsCateList;

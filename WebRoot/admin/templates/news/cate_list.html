@@ -3,14 +3,14 @@
 		<div class="col-xs-12">
 			<div class="page-header clearfix gov_tb_padding">
 				<h1 class="gov_left">
-					新闻中心
+					新闻分类
 					<small>
 						<i class="icon-double-angle-right"></i>
 						列表
 					</small>
 				</h1>
 				<div class="btn-group pull-right gov_right">
-					<button class="btn btn-sm btn-purple" ng-click="addArticle();">
+					<button class="btn btn-sm btn-purple" ng-click="addCate();">
 						<i class="icon-plus bigger-125"></i>
 						新增
 					</button>
@@ -39,7 +39,7 @@
 							<td>{{category.create_date}}</td>
 							<td>
 								<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-									<a class="green" href="#">
+									<a class="green" ng-click="goEdit(category.id);">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 									<a class="red" href="#">
