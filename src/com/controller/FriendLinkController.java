@@ -2,6 +2,7 @@ package com.controller;
 
 import com.common.result.JsonResult;
 import com.common.util.JsonMapUtils;
+import com.common.util.StringUtils;
 import com.exception.ServiceException;
 import com.jfinal.core.Controller;
 import com.model.ArticleCategoryDao;
@@ -89,6 +90,20 @@ public class FriendLinkController extends Controller {
         } else{
             renderJson(new JsonResult("更新失败", null, "1", null, null));
         }
-
     }
+
+    public void del(){
+        Long id = getParaToLong("id");
+        if(StringUtils.isEmpty(getParaToLong("id"))){
+            renderJson(new JsonResult("传入记录ID为空", null, "1", null, null));
+        }
+        boolean flag = FriendLinkDao.friendDao.del(id);
+        if(flag){
+            renderJson(new JsonResult("success", null, "0", null, null));
+        }else{
+            renderJson(new JsonResult("删除失败", null, "1", null, null));
+        }
+    }
+
+
 }

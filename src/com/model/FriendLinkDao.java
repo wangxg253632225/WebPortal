@@ -73,5 +73,14 @@ public class FriendLinkDao extends FriendLink<FriendLinkDao> implements IBean {
         return  Db.update(sql, linkName, linkUrl,level,remark,lastUpdateDate,version,id);
     }
 
+    /**
+     * 删除一条记录
+     * @param id
+     * @return
+     */
+    public boolean del(Long id ){
+        return friendDao.deleteById(id);
+    }
+
 
 }

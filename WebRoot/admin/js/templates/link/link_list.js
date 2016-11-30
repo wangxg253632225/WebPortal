@@ -11,7 +11,6 @@ define(['angular'], function(angular) {
 			})
 			.success(function(response) {
 				if (response.code == "0") {
-					console.log(response.data);
 					$scope.dataList = response.data;
 				}
 			})
@@ -22,15 +21,32 @@ define(['angular'], function(angular) {
 		};
 		$scope.findList();
 		
+		/** 新增友情链接*/
 		$scope.addLink = function(){
 			$location.path('/link/link_add');
 		}
 		
-		/*编辑分类*/
+		/** 编辑友情链接*/
 		$scope.goEdit = function(id){
-			console.log(id);
 			$location.url('/link/link_edit?id='+id);
 		}
+		/** 删除友情链接*/
+		$scope.goDel = function(id){
+			$http({
+				method: 'GET',
+				url: adminUrl + "link/del?id="+id
+			})
+			.success(function(response) {
+				if (response.code == "0") {
+					$scope.findList();
+				}
+			})
+			.error(function() {
+				console.log("shibai");
+				return;
+			});
+		}
+		
 
 	});
 	return linkList;
