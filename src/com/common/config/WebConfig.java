@@ -3,6 +3,7 @@ package com.common.config;
 
 import com.controller.ArticleCategoryController;
 import com.controller.ArticleController;
+import com.controller.FriendLinkController;
 import com.controller.UserController;
 import com.interceptor.ExceptionInterceptor;
 import com.jfinal.config.*;
@@ -32,6 +33,7 @@ public class WebConfig extends JFinalConfig {
         me.add("/user", UserController.class, "/login");    // 第三个参数为该Controller的视图存放路径
         me.add("/articleCategory", ArticleCategoryController.class);
         me.add("/article", ArticleController.class);
+        me.add("/link",FriendLinkController.class);
 //        me.add("/blog", BlogController.class);			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
 //        me.add("/user", UserController.class,"/login");  //用户操作controller
 //        me.add("/user", UserController.class,"/login");  //用户操作controller

@@ -42,6 +42,15 @@ define(['angular'], function(angular) {
 				path: '/news/news_list',
 				icon: 'icon-desktop'
 			}]
+		},{
+			name: '友情链接',
+			path: '/link/index',
+			icon: 'icon-desktop',
+			children: [{
+				name: '链接管理',
+				path: '/link/link_list',
+				icon: 'icon-desktop'
+			}]
 		}];
 
 		$scope.onOpenMenuOrHref = function(item) {

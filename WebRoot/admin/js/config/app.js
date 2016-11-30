@@ -77,6 +77,17 @@ define(['angular', 'require', 'ngRoute','cTri','js/config/model'], function(angu
 						}
 					}
 				}).
+			when('/link/index', {
+					resolve: {
+						keyName: function($q) {
+							var deferred = $q.defer();
+							require(['js/templates/link/index'], function(controller) {
+								deferred.resolve();
+							});
+							return deferred.promise;
+						}
+					}
+				}).
 			otherwise({
 				redirectTo: '/index' //angular就喜欢斜杠开头
 			});
