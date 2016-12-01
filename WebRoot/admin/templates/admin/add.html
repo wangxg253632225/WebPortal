@@ -24,10 +24,10 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="true">
+					<span class="green" ng-if="data.username">
 						<i class="icon-ok-sign"></i> 账号可用
 					</span>
-					<span class="red" ng-if="false">
+					<span class="red" ng-if="!data.username">
 						<i class="icon-remove-sign"></i> 该账号已存在！
 					</span>
 					
@@ -43,14 +43,14 @@
 						<span class="input-group-addon">
 							<i class="icon-lock"></i>
 						</span>
-						<input type="password" class="width-100" ng-model="data.password"/>
+						<input type="password" class="width-100" ng-model="data.password" required/>
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
+					<span class="green" ng-if="data.password">
 						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="true">
+					<span class="red" ng-if="!data.password">
 						<i class="icon-remove-sign"></i> 密码长度为4-16位
 					</span>
 					
@@ -66,14 +66,14 @@
 						<span class="input-group-addon">
 							<i class="icon-lock"></i>
 						</span>
-						<input type="password" class="width-100" />
+						<input type="password" id="repassword" name="repassword" ng-model="repassword" class="width-100" required/>
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
+					<span class="green" ng-if="data.password == repassword">
 						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="true">
+					<span class="red" ng-if="data.password != repassword">
 						<i class="icon-remove-sign"></i> 两次输入的密码不一致
 					</span>
 					
