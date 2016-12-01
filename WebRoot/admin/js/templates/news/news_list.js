@@ -97,37 +97,51 @@ define(['angular'], function(angular) {
 		}
 		
 		//弹出删除选择框
-    	$scope.confirmDelete = function(titleStr,contentStr){
-			$mdDialog.show({
-				controller: deleteConfirmCtrl,
-				templateUrl: 'templates/common/delectConfirm.html',
-				parent: angular.element(document.body),
-				targetEvent: event,
-				clickOutsideToClose: true,
-				fullscreen: false
-			}).then(function(answer) {
-				if("ok" === answer){
-//					$scope.deleteHead(); //调用作废对账单方法
-				}
-			}, function() {
-				$scope.status = 'You cancelled the dialog.';
-			});
-		
-			function deleteConfirmCtrl($scope) {
-				$scope.title = titleStr;
-				$scope.content = contentStr;
-				
-				$scope.hide = function() {
-					$mdDialog.hide();
-				};
-				$scope.cancel = function() {
-					$mdDialog.cancel();
-				};
-				$scope.answer = function(answer) {
-					$mdDialog.hide(answer);
-				};
-			}
+    	$scope.confirmDelete = function(id,name){
+		    var confirm = $mdDialog.confirm()
+		          .title("新闻删除")
+		          .textContent("您确定要删除《"+name+"》该文章吗？")
+		          .ok('确定')
+		          .cancel('取消');
+		    $mdDialog.show(confirm).then(function() {
+		    	$scope.deleteById(id);
+		    }, function() {
+		      	$scope.status = 'cancel';
+		    });
 		};
+		
+		$scope.deleteById = function(id){
+			$http({
+				method: 'POST',
+				url: adminUrl + "article/delete?id="+id
+			})
+			.success(function(response) {
+				if (response.code == "0") {
+					alert = $mdDialog.alert({
+				        title: '新闻删除',
+				        textContent: '新闻删除成功',
+				        ok: '关闭'
+				    });
+				    $mdDialog
+			        .show( alert )
+			        .finally(function() {
+			        	$scope.findList();
+				    });
+				}else{
+					$mdDialog.show(
+						$mdDialog.alert()
+						.title('新闻删除')
+						.textContent('异常:'+response.msg+"("+response.code+")")
+						.ariaLabel('新闻删除')
+						.ok('关闭')
+					);
+				}
+			})
+			.error(function() {
+				console.log("shibai");
+				return;
+			});
+		}
 
 	});
 	return newsList;

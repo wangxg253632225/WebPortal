@@ -7,7 +7,6 @@ define(['angular','js/common/httpErrorDialog.js'], function(angular) {
 		return {
 			request: function(config) {
 				if (!config.noLoader) {
-		
 					httpshowloading();
 				}
 				return config;

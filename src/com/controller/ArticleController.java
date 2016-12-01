@@ -98,7 +98,23 @@ public class ArticleController extends Controller {
         if(count > 0){
             renderJson(new JsonResult("success", null, "0", null, null));
         } else{
-            renderJson(new JsonResult("请参入名称", null, "1", null, null));
+            renderJson(new JsonResult("更新失败", null, "1", null, null));
+        }
+    }
+
+    public void delete(){
+        Long id = getParaToLong("id");
+        if(id == null){
+            renderJson(new JsonResult("请参入ID", null, "1", null, null));
+            return;
+        }
+
+        boolean isDelete =ArticleDao.articleDao.deleteById(id);
+
+        if(isDelete){
+            renderJson(new JsonResult("success", null, "0", null, null));
+        }else{
+            renderJson(new JsonResult("删除是吧", null, "1", null, null));
         }
     }
 }
