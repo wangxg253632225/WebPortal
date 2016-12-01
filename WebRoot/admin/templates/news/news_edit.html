@@ -23,10 +23,10 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
-						<i class="icon-ok-sign"></i> 账号可用
+					<span class="green" ng-if="article.cate_id">
+						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="true">
+					<span class="red" ng-if="!article.cate_id">
 						<i class="icon-remove-sign"></i> 请选择新闻分类
 					</span>
 				</div>
@@ -45,10 +45,10 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
-						<i class="icon-ok-sign"></i> 账号可用
+					<span class="green" ng-if="article.name">
+						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="true">
+					<span class="red" ng-if="!article.name">
 						<i class="icon-remove-sign"></i> 请输入新闻名称
 					</span>
 				</div>
@@ -67,10 +67,10 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
-						<i class="icon-ok-sign"></i> 账号可用
+					<span class="green" ng-if="article.author">
+						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="true">
+					<span class="red" ng-if="!article.author">
 						<i class="icon-remove-sign"></i> 请输入作者
 					</span>
 				</div>
@@ -89,10 +89,10 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
-						<i class="icon-ok-sign"></i> 账号可用
+					<span class="green" ng-if="article.title">
+						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="true">
+					<span class="red" ng-if="!article.title">
 						<i class="icon-remove-sign"></i> 请输入标题
 					</span>
 				</div>
@@ -109,27 +109,24 @@
 			
 			<div class="form-group">
 				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;
 				</label>
 				<div class="col-xs-12 col-sm-5">
 					<div class="btn-group pull-left">
-						<button class="btn btn-sm btn-purple" ng-click="updateArticle();">
+						<button ng-disabled="!(article.cate_id && article.name && article.author && article.title)" class="btn btn-sm btn-purple" ng-click="updateArticle();">
 							<i class="icon-save bigger-125"></i>
 							保存
 						</button>
 					</div>
 					<div class="btn-group pull-left" style="margin-left:12px;">
-						<button class="btn btn-sm btn-info">
-							<i class="icon-remove bigger-125"></i>
-							取消
+						<button class="btn btn-sm btn-info" ng-click="goList()">
+							<i class="icon-reply bigger-125"></i>
+							返回
 						</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="htmlAAA">
-				
 	</div>
 </div>
 

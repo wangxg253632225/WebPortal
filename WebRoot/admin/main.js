@@ -13,6 +13,7 @@
 			angular: 'libs/Angular.min',
 			ngAnimate: 'libs/angular-animate.min',
 			ngAria: 'libs/angular-aria.min',
+			ngMaterial: 'libs/angular-material.min',
 			ngRoute: 'libs/angular-route.min',
 			ngMessages: 'libs/angular-messages.min',
 			ngPrint: 'libs/angularPrint',
@@ -30,6 +31,10 @@
 			ngPrint : {
 				deps: ['angular'],
 				exports: 'ngPrint'
+			},
+			ngMaterial: {
+				deps: ['angular', 'ngAnimate', 'ngAria'],
+				exports: 'ngMaterial'
 			},
 			ngAria: {
 				deps: ['angular'],

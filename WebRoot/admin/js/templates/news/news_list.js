@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
 	var newsList = angular.module('newsList', []);
 
-	newsList.controller('newsListCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter) {
+	newsList.controller('newsListCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter,$mdDialog) {
 		
 		$scope.pageSizes = [2,5,10,20];
 		//变量  
@@ -19,8 +19,8 @@ define(['angular'], function(angular) {
 				method: 'POST',
 				url: adminUrl + "article/getList?type=news",
 				data:{
-					pageNum:1,
-					pageSize:10
+					pageNum:$scope.pageNum,
+					pageSize:$scope.pageSize
 				}
 			})
 			.success(function(response) {
@@ -95,6 +95,39 @@ define(['angular'], function(angular) {
 		$scope.goEdit = function(id){
 			$location.url('/news/news_edit?id='+id);
 		}
+		
+		//弹出删除选择框
+    	$scope.confirmDelete = function(titleStr,contentStr){
+			$mdDialog.show({
+				controller: deleteConfirmCtrl,
+				templateUrl: 'templates/common/delectConfirm.html',
+				parent: angular.element(document.body),
+				targetEvent: event,
+				clickOutsideToClose: true,
+				fullscreen: false
+			}).then(function(answer) {
+				if("ok" === answer){
+//					$scope.deleteHead(); //调用作废对账单方法
+				}
+			}, function() {
+				$scope.status = 'You cancelled the dialog.';
+			});
+		
+			function deleteConfirmCtrl($scope) {
+				$scope.title = titleStr;
+				$scope.content = contentStr;
+				
+				$scope.hide = function() {
+					$mdDialog.hide();
+				};
+				$scope.cancel = function() {
+					$mdDialog.cancel();
+				};
+				$scope.answer = function(answer) {
+					$mdDialog.hide(answer);
+				};
+			}
+		};
 
 	});
 	return newsList;

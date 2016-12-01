@@ -1,6 +1,9 @@
-define(['angular', 'require', 'ngRoute','cTri','js/config/model'], function(angular, require) {
+define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
+		,'js/common/function'
+		,'js/common/model'
+		,'js/common/httpError'], function(angular, require) {
 	
-	var app = angular.module('webapp', ['ngRoute','c.tri']);
+	var app = angular.module('webapp', ['ngRoute','ngMaterial','c.tri','mdhttperror']);
 	var modulelist = [];
 
 	function existModule(moduleName) {

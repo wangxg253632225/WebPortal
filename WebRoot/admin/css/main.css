@@ -32,5 +32,21 @@
 .gov_lf_padd12{
 	padding: 0px 12px!important;
 }
-
+.alert{
+	padding: 0;
+	margin: 0;
+}
+.alert .alert_header{
+	height: 40px;
+	line-height: 40px;
+	margin: 0px 12px;
+	font-size:16px;
+}
+.alert hr{
+	padding: 0;
+	margin: 0;
+}
+.alert .alert_content{
+	margin: 0px 12px;
+}
 

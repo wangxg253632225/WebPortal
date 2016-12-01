@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
 	var newsEdit = angular.module('newsEdit', []);
 
-	newsEdit.controller('newsEditCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter,$routeParams) {
+	newsEdit.controller('newsEditCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter,$routeParams,$mdDialog) {
 		
 		$scope.dataList = new Array();
 		$scope.article = {
@@ -19,7 +19,6 @@ define(['angular'], function(angular) {
 				url: adminUrl + "articleCategory/getList?type=news"
 			})
 			.success(function(response) {
-				console.log(response);
 				if (response.code == "0") {
 					$scope.dataList = response.data;
 				}
@@ -41,7 +40,7 @@ define(['angular'], function(angular) {
 			.success(function(response) {
 				if(response.code == "0"){
 					$scope.article.id = response.data.id;
-					$scope.article.cate_id = response.data.cate_id;
+					$scope.article.cate_id = response.data.cate_id.toString();
 					$scope.article.name = response.data.name;
 					$scope.article.title = response.data.title;
 					$scope.article.author = response.data.author;
@@ -65,9 +64,25 @@ define(['angular'], function(angular) {
 				data:$scope.article
 			})
 			.success(function(response) {
-				console.log(response);
 				if(response.code == "0"){
-					$location.path("/news/news_list");
+					alert = $mdDialog.alert({
+				        title: '新闻更新',
+				        textContent: '新闻更新成功',
+				        ok: '关闭'
+				    });
+				    $mdDialog
+			        .show( alert )
+			        .finally(function() {
+			        	$location.path("/news/news_list");
+				    });
+				}else{
+					$mdDialog.show(
+						$mdDialog.alert()
+						.title('新闻更新')
+						.textContent('异常:'+response.msg+"("+response.code+")")
+						.ariaLabel('新闻更新')
+						.ok('关闭')
+					);
 				}
 			})
 			.error(function() {
@@ -75,8 +90,11 @@ define(['angular'], function(angular) {
 				return;
 			});
 		};
-		
 		/** 更新结束 */
+		
+		$scope.goList = function(){
+			$location.path('/news/news_list');
+		}
 	});
 	return newsEdit;
 });

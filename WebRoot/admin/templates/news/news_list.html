@@ -51,10 +51,10 @@
 							<td>{{article.is_top == 1?'是':"否"}}</td>
 							<td>
 								<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-									<a class="green"  ng-click="goEdit(article.id);">
+									<a class="green" ng-click="goEdit(article.id);">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
-									<a class="red" href="#">
+									<a class="red" ng-click="confirmDelete('新闻删除','您确定要删除该文章吗？');">
 										<i class="icon-trash bigger-130"></i>
 									</a>
 								</div>

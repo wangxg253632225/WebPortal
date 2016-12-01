@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
 	var newsAdd = angular.module('newsAdd', []);
 
-	newsAdd.controller('newsAddCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter) {
+	newsAdd.controller('newsAddCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter,$mdDialog) {
 		$scope.dataList = new Array();
 		
 		/** 新增的请求参数 */
@@ -42,13 +42,34 @@ define(['angular'], function(angular) {
 			})
 			.success(function(response) {
 				if(response.code == "0"){
-					$location.path("/news/news_list");
+					alert = $mdDialog.alert({
+				        title: '新闻新增',
+				        textContent: '新闻新增成功',
+				        ok: '关闭'
+				    });
+				    $mdDialog
+			        .show( alert )
+			        .finally(function() {
+			        	$location.path("/news/news_list");
+				    });
+				}else{
+					$mdDialog.show(
+						$mdDialog.alert()
+						.title('新闻新增')
+						.textContent('异常:'+response.msg+"("+response.code+")")
+						.ariaLabel('新闻新增')
+						.ok('关闭')
+					);
 				}
 			})
 			.error(function() {
 				console.log("shibai");
 				return;
 			});
+		}
+		
+		$scope.goList = function(){
+			$location.path('/news/news_list');
 		}
 	});
 	return newsAdd;
