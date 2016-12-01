@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
 	var linkEdit = angular.module('linkEdit', []);
 
-	linkEdit.controller('linkEditCtrl', function($scope,$http,$location,$routeParams,$mdDialog) {
+	linkEdit.controller('linkEditCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter,$routeParams,$mdDialog) {
 
 		$scope.data = {
 			"id":0,
@@ -19,7 +19,6 @@ define(['angular'], function(angular) {
 					url: adminUrl + "link/getDetail?id=" + $routeParams.id
 				})
 				.success(function(response) {
-					console.log(response);
 					if (response.code == "0") {
 						$scope.data.id = response.data.id;
 						$scope.data.linkName = response.data.link_name;
@@ -39,6 +38,7 @@ define(['angular'], function(angular) {
 
 		/*更新分类数据*/
 		$scope.updateLink = function() {
+			console.log($scope.data);
 			$http({
 					method: 'POST',
 					url: adminUrl + "link/updateLink",
