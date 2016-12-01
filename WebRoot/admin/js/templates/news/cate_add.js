@@ -9,7 +9,7 @@ define(['angular'], function(angular) {
 			"keyWord": null,
 			"level": null,
 			"cateFlag": "news",
-			"remark": null
+			"remark":""
 		};
 		/*新增分类*/
 		$scope.addCate = function() {

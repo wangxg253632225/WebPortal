@@ -1,7 +1,7 @@
 define(['angular'], function(angular) {
 	var linkEdit = angular.module('linkEdit', []);
 
-	linkEdit.controller('linkEditCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter, $routeParams) {
+	linkEdit.controller('linkEditCtrl', function($scope,$http,$location,$routeParams,$mdDialog) {
 
 		$scope.data = {
 			"id":0,
@@ -46,7 +46,24 @@ define(['angular'], function(angular) {
 				})
 				.success(function(response) {
 					if (response.code == 0) {
-						$location.url("/link/link_list");
+						alert = $mdDialog.alert({
+							title: '链接更新',
+							textContent: '链接更新成功',
+							ok: '关闭'
+						});
+						$mdDialog
+							.show(alert)
+							.finally(function() {
+								$location.path("/link/link_list");
+							});
+					} else {
+						$mdDialog.show(
+							$mdDialog.alert()
+							.title('链接更新')
+							.textContent('异常:' + response.msg + "(" + response.code + ")")
+							.ariaLabel('链接更新失败')
+							.ok('关闭')
+						);
 					}
 				})
 				.error(function() {

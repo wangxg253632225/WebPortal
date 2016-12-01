@@ -24,11 +24,11 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="true">
-						<i class="icon-ok-sign"></i> 账号可用
+					<span class="green" ng-if="data.linkName">
+						<i class="icon-ok-sign"></i> 
 					</span>
-					<span class="red" ng-if="false">
-						<i class="icon-remove-sign"></i> 该账号已存在！
+					<span class="red" ng-if="!data.linkName">
+						<i class="icon-remove-sign"></i> 请输入链接名称
 					</span>
 					
 				</div>
@@ -47,11 +47,11 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
+					<span class="green" ng-if="data.linkUrl">
 						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="true">
-						<i class="icon-remove-sign"></i> 密码长度为4-16位
+					<span class="red" ng-if="!data.linkUrl">
+						<i class="icon-remove-sign"></i> 请输入链接地址
 					</span>
 					
 				</div>
@@ -70,11 +70,11 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
+					<span class="green" ng-if="data.level">
 						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="true">
-						<i class="icon-remove-sign"></i> 两次输入的密码不一致
+					<span class="red" ng-if="!data.level">
+						<i class="icon-remove-sign"></i> 请输入位置
 					</span>
 					
 				</div>
@@ -89,16 +89,16 @@
 						<span class="input-group-addon">
 							<i class="icon-lock"></i>
 						</span>
-						<input type="text" class="width-100" ng-model="data.remark" />
+						<input type="text" class="width-100" ng-model="data.remark == null:"" ? data.remark" />
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="false">
+					<!--<span class="green" ng-if="false">
 						<i class="icon-ok-sign"></i>
 					</span>
 					<span class="red" ng-if="true">
-						<i class="icon-remove-sign"></i> 两次输入的密码不一致
-					</span>
+						<i class="icon-remove-sign"></i> 
+					</span>-->
 					
 				</div>
 			</div>
@@ -109,7 +109,7 @@
 				</label>
 				<div class="col-xs-12 col-sm-5">
 					<div class="btn-group pull-left">
-						<button class="btn btn-sm btn-purple" ng-click="updateLink();">
+						<button ng-disable="(data.linkName && data.linkUrl && data.level)" class="btn btn-sm btn-purple" ng-click="updateLink();">
 							<i class="icon-save bigger-125"></i>
 							保存
 						</button>
