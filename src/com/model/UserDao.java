@@ -1,5 +1,8 @@
 package com.model;
 
+import com.common.util.DateUtils;
+import com.common.util.StringUtils;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IBean;
 import com.jfinal.plugin.activerecord.Page;
 import com.model.bean.UserBasicInfo;
@@ -27,7 +30,7 @@ public class UserDao extends UserBasicInfo<UserDao> implements IBean {
      */
     public List<UserDao> getUser(String username, String password) {
         List<UserDao> userDaoList = new ArrayList<UserDao>();
-        String sql = "select * from USER_BASIC_INFO where USERNAME=?  and  PASSWORD=? ";
+        String sql = "select * from gov_user where username=?  and  password=? ";
         if (username != null && password != null) {
             userDaoList = userDao.find(sql, new Object[]{username, password});
         }
@@ -43,7 +46,7 @@ public class UserDao extends UserBasicInfo<UserDao> implements IBean {
      */
     public List<UserDao> getUserByUsernameAndPassword(String username, String password) {
         List<UserDao> userDaoList = new ArrayList<UserDao>();
-        String sql = "select * from USER_BASIC_INFO where USERNAME=?  and  PASSWORD=? ";
+        String sql = "select * from gov_user where username=?  and  password=? ";
         if (username != null && password != null) {
             userDaoList = userDao.find(sql, new Object[]{username, password});
         }
@@ -52,7 +55,7 @@ public class UserDao extends UserBasicInfo<UserDao> implements IBean {
 
     public Map<String,Object> getUserList(int pageNum, int pageSize) {
         Map<String,Object> returnData = new HashMap<String,Object>();
-        Page<UserDao> userDaoPage = userDao.paginate(pageNum, pageSize, "select *", "from USER_BASIC_INFO");
+        Page<UserDao> userDaoPage = userDao.paginate(pageNum, pageSize, "select *", "from gov_user");
             List<Map<String,Object>> list = new ArrayList<Map<String, Object>>();
             returnData.put("pageNumber", userDaoPage.getPageNumber());
             returnData.put("pageSize", userDaoPage.getPageSize());
@@ -62,10 +65,12 @@ public class UserDao extends UserBasicInfo<UserDao> implements IBean {
             returnData.put("lastPage", userDaoPage.isLastPage());
             for(int i = 0 ; i < userDaoPage.getList().size(); i ++ ){
                 Map<String,Object>  returnMap = new HashMap();
-                returnMap.put("ID",userDaoPage.getList().get(i).get("ID"));
-                returnMap.put("USERNAME",userDaoPage.getList().get(i).get("USERNAME"));
-                returnMap.put("PASSWORD",userDaoPage.getList().get(i).get("PASSWORD"));
-                returnMap.put("CREATE_TIME",userDaoPage.getList().get(i).get("CREATE_TIME"));
+                returnMap.put("id",userDaoPage.getList().get(i).get("id"));
+                returnMap.put("username",userDaoPage.getList().get(i).get("username"));
+                returnMap.put("password",userDaoPage.getList().get(i).get("password"));
+                returnMap.put("createDate",userDaoPage.getList().get(i).get("create_date"));
+                returnMap.put("lastUpdateDate",userDaoPage.getList().get(i).get("last_update_date"));
+                returnMap.put("remark",userDaoPage.getList().get(i).get("remark"));
                 list.add(returnMap);
             }
             returnData.put("list",list);
@@ -80,7 +85,7 @@ public class UserDao extends UserBasicInfo<UserDao> implements IBean {
      */
     public int findOneRecord(String username) {
         int count = 0;
-        String sql = "select * from USER_BASIC_INFO where USERNAME=?";
+        String sql = "select * from gov_user where username=?";
         List<UserDao> lists = userDao.find(sql, new Object[]{username});
         if (lists != null && lists.size() > 0) {
             count = lists.size();
@@ -88,11 +93,43 @@ public class UserDao extends UserBasicInfo<UserDao> implements IBean {
         return count;
     }
 
-    public void addUser(String username, String password) {
+    public void addUser(Map<String,Object> map) {
         UserDao user = new UserDao();
-        user.set("USERNAME", username);
-        user.set("PASSWORD", password);
+        if(!StringUtils.isEmpty(map.get("username"))){
+            user.set("username", map.get("username").toString());
+        }
+        if(!StringUtils.isEmpty(map.get("password"))){
+            user.set("password", map.get("password").toString());
+        }
+        if(!StringUtils.isEmpty(map.get("remark"))){
+            user.set("remark", map.get("remark").toString());
+        }
+        user.set("version",1);
+        user.set("create_date", DateUtils.currentDatetime());
         user.save();
+    }
+
+    public int updateUser(Map<String,Object> map) {
+        String id = map.get("id").toString();
+        String sql = "update gov_user set username=?,password=?,last_update_date=?,remark=?,version=? where id=?";
+        String username = "";
+        if(!StringUtils.isEmpty(map.get("username"))){
+            username = map.get("username").toString();
+        }
+        String password = "";
+        if(!StringUtils.isEmpty(map.get("password"))){
+            password = map.get("password").toString();
+        }
+        int version = 1;
+        if(!StringUtils.isEmpty(map.get("version"))){
+            version = Integer.parseInt(map.get("version").toString())+1;
+        }
+        String lastUpdateDate = DateUtils.currentDatetime();
+        String remark = "";
+        if(!StringUtils.isEmpty(map.get("remark"))){
+            remark = map.get("remark").toString();
+        }
+        return  Db.update(sql, username, password,lastUpdateDate,remark,version,id);
     }
 
 }

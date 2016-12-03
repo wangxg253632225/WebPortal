@@ -1,4 +1,4 @@
-<div ng-controller="adminAddCtrl">
+<div ng-controller="adminEditCtrl">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="page-header">
@@ -6,7 +6,7 @@
 					管理员列表
 					<small>
 						<i class="icon-double-angle-right"></i>
-						新增
+						修改
 					</small>
 				</h1>
 			</div>
@@ -24,11 +24,11 @@
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="data.username">
-						<i class="icon-ok-sign"></i> 用户可用
+					<span class="green" ng-if="true">
+						<i class="icon-ok-sign"></i> 账号可用
 					</span>
-					<span class="red" ng-if="!data.username">
-						<i class="icon-remove-sign"></i>请输入用户名称
+					<span class="red" ng-if="false">
+						<i class="icon-remove-sign"></i> 该账号已存在！
 					</span>
 					
 				</div>
@@ -43,38 +43,15 @@
 						<span class="input-group-addon">
 							<i class="icon-lock"></i>
 						</span>
-						<input type="password" class="width-100" ng-model="data.password" required/>
+						<input type="password" class="width-100" ng-model="data.password"/>
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
 					<span class="green" ng-if="data.password">
 						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="!data.password">
-						<i class="icon-remove-sign"></i> 密码长度为4-16位
-					</span>
-					
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
-					&nbsp;确认密码
-				</label>
-				<div class="col-xs-12 col-sm-3">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<i class="icon-lock"></i>
-						</span>
-						<input type="password" id="repassword" name="repassword" ng-model="repassword" class="width-100" required/>
-					</div>
-				</div>
-				<div class="help-block col-xs-12 col-sm-reset inline">
-					<span class="green" ng-if="(data.password == repassword)&&repassword !=null">
-						<i class="icon-ok-sign"></i>
-					</span>
-					<span class="red" ng-if="(data.password != repassword)">
-						<i class="icon-remove-sign"></i> 两次输入的密码不一致
+					<span class="red" ng-if="!(data.password)">
+						<i class="icon-remove-sign"></i> 请输入修改密码
 					</span>
 					
 				</div>
@@ -89,20 +66,19 @@
 						<span class="input-group-addon">
 							<i class="icon-lock"></i>
 						</span>
-						<input type="password" name="remark" ng-model="data.remark" class="width-100" />
+						<input type="text" class="width-100" ng-model="data.remark" />
 					</div>
 				</div>
 				<div class="help-block col-xs-12 col-sm-reset inline">
-					<!--<span class="green" ng-if="(data.password == repassword)&&repassword !=null">
+					<!--<span class="green" ng-if="data.remark">
 						<i class="icon-ok-sign"></i>
 					</span>
-					<span class="red" ng-if="(data.password != repassword)">
+					<span class="red" ng-if="true">
 						<i class="icon-remove-sign"></i> 两次输入的密码不一致
 					</span>-->
 					
 				</div>
 			</div>
-			
 			
 			<div class="form-group">
 				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
@@ -110,7 +86,7 @@
 				</label>
 				<div class="col-xs-12 col-sm-5">
 					<div class="btn-group pull-left">
-						<button ng-disabled="!((data.username !=null)&&(data.password == repassword))" class="btn btn-sm btn-purple" ng-click="addAdmin();">
+						<button class="btn btn-sm btn-purple" ng-click="updateAdmin();">
 							<i class="icon-save bigger-125"></i>
 							保存
 						</button>
