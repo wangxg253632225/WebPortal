@@ -114,7 +114,31 @@ public class ArticleController extends Controller {
         if(isDelete){
             renderJson(new JsonResult("success", null, "0", null, null));
         }else{
-            renderJson(new JsonResult("删除是吧", null, "1", null, null));
+            renderJson(new JsonResult("删除失败", null, "1", null, null));
+        }
+    }
+
+    public void deleteIds(){
+        Map<String,Object> map =  new HashMap<String,Object>();
+        try{
+            map = JsonMapUtils.getRequestObject(this.getRequest());
+        }catch (Exception e){
+            renderJson(new JsonResult("参数的参数有误", null, "1", null, null));
+            return;
+        }
+
+        if(map.get("ids") == null){
+            renderJson(new JsonResult("请参入集合ID", null, "1", null, null));
+            return;
+        }
+        String ids = (String)map.get("ids");
+
+        boolean isDelete = ArticleDao.articleDao.deleteByIds(ids);
+
+        if(isDelete){
+            renderJson(new JsonResult("success", null, "0", null, null));
+        }else{
+            renderJson(new JsonResult("删除失败", null, "1", null, null));
         }
     }
 }

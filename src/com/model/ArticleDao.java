@@ -1,9 +1,11 @@
 package com.model;
 
+import com.common.util.DateUtils;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IBean;
 import com.jfinal.plugin.activerecord.Page;
 import com.model.bean.Article;
+import sun.nio.cs.ext.DBCS_IBM_EBCDIC_Decoder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +25,7 @@ public class ArticleDao extends Article<ArticleDao> implements IBean {
         article.put("title",data.get("title"));
         article.put("author",data.get("author"));
         article.put("content",data.get("content"));
+        article.set("create_date", DateUtils.currentDatetime());
         article.save();
          return article;
     }
@@ -66,12 +69,23 @@ public class ArticleDao extends Article<ArticleDao> implements IBean {
     public int update(Map<String,Object> data){
 
         StringBuffer updateSql = new StringBuffer(" update gov_article set")
-                            .append(" cate_id = "+ data.get("cate_id")).append(",")
-                            .append(" name = '"+ data.get("name")).append("',")
-                            .append(" title = '"+ data.get("title")).append("',")
-                            .append(" author = '"+ data.get("author")).append("',")
-                            .append(" content = '"+ data.get("content")).append("'")
-                            .append(" where id = " + data.get("id"));
+                .append(" cate_id = "+ data.get("cate_id")).append(",")
+                .append(" name = '"+ data.get("name")).append("',")
+                .append(" title = '"+ data.get("title")).append("',")
+                .append(" author = '"+ data.get("author")).append("',")
+                .append(" last_update_date = '"+ DateUtils.currentDatetime()).append("',")
+                .append(" content = '"+ data.get("content")).append("'")
+                .append(" where id = " + data.get("id"));
         return   Db.update(updateSql.toString());
+    }
+
+    public boolean deleteByIds(String ids){
+        String deleteSql = "delete from gov_article where id in ("+ids+")";
+        int count = Db.update(deleteSql);
+        if(count > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

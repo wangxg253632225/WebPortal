@@ -10,7 +10,11 @@
 					</small>
 				</h1>
 				<div class="btn-group pull-right gov_right">
-					<button class="btn btn-sm btn-purple" ng-click="addArticle();">
+					<button class="btn btn-danger btn-sm gov-ml-10" ng-click="deleteByIdsConfirm()">
+						<i class="icon-remove bigger-125"></i>
+						删除
+					</button>
+					<button class="btn btn-sm btn-purple gov-ml-10" ng-click="addArticle();">
 						<i class="icon-plus bigger-125"></i>
 						新增
 					</button>
@@ -23,7 +27,7 @@
 						<tr>
 							<th class="center">
 								<label>
-									<input type="checkbox" class="ace" />
+									<input type="checkbox" class="ace" ng-model="totalFlag" ng-click="selectTotal(totalFlag)"/>
 									<span class="lbl"></span>
 								</label>
 							</th>
@@ -40,7 +44,7 @@
 						<tr ng-repeat="article in dataList">
 							<td class="center">
 								<label>
-									<input type="checkbox" class="ace" />
+									<input type="checkbox" class="ace" ng-model="article.flag" ng-click="selectCheck(article)"/>
 									<span class="lbl"></span>
 								</label>
 							</td>

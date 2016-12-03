@@ -11,6 +11,7 @@ html,body{
 	background: linear-gradient(#78502d, #534141);*/
 	background-image: url(../img/bg.png);
 	background-repeat: repeat;
+	background-attachment: fixed
 }
 /** 清除浮动能够撑开父div的大小，给父div加clearfix这个class */
 .clearfix:before,
@@ -444,5 +445,37 @@ html,body{
 .articleContent .articleRight .articlePage a:hover{
 	color: #004499;
 	text-decoration: underline;
+}
+
+.articleContent .articleRight .line{
+    height: 24px;
+    line-height: 24px;
+    background-image: url(../img/pic1.jpg);
+    background-repeat: no-repeat;
+    background-position: 8px 50%;
+    padding-left: 25px;
+}
+
+.articleContent .articleRight .line a{
+	color: #000;
+	text-decoration: none;
+	display: inline;
+	width: 563px;
+	float: left;
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap; 
+	word-break:keep-all;
+}
+.articleContent .articleRight .line a:hover{
+	text-decoration: underline;
+	
+}
+.articleContent .articleRight .line span{
+	color: #c0cbdb;
+	display: inline;
+	width: 100px;
+	float: right;	
+	text-align: right;
 }
 /** 文章结束 */
