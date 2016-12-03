@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+.wn_label{
+	padding-left: 12px;
+	float: left;
+}
 /** 清除浮动能够撑开父div的大小，给父div加clearfix这个class */
 .clearfix:before,
 .clearfix:after {
