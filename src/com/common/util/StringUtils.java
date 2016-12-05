@@ -3,6 +3,7 @@ package com.common.util;
 import org.json.JSONArray;
 
 import java.security.MessageDigest;
+import java.util.UUID;
 
 /**
  * 字符串操作工具
@@ -281,6 +282,23 @@ public final class StringUtils {
         }else{
             return false ;
         }
+    }
+
+
+    /**
+     * 生成UUID
+     * @return
+     */
+    public static String getUUID() {
+        /*UUID uuid = UUID.randomUUID();
+        String str = uuid.toString();
+        // 去掉"-"符号
+        String temp = str.substring(0, 8) + str.substring(9, 13)
+                + str.substring(14, 18) + str.substring(19, 23)
+                + str.substring(24);
+        return temp;*/
+
+        return UUID.randomUUID().toString().replace("-", "");
     }
 
     public static String parseStringToArray(String json){
