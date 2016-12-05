@@ -19,7 +19,7 @@ define(['angular'], function(angular) {
 			children: [{
 				name: '新闻分类',
 				path: '/news/cate_list',
-				icon: 'icon-desktop',
+				icon: 'icon-desktop'
 			},{
 				name: '新闻管理',
 				path: '/news/news_list',
@@ -32,7 +32,7 @@ define(['angular'], function(angular) {
 			children: [{
 				name: '通知公告分类',
 				path: '/news/cate_list',
-				icon: 'icon-desktop',
+				icon: 'icon-desktop'
 			},{
 				name: '通知公告管理',
 				path: '/news/news_list',
@@ -53,6 +53,11 @@ define(['angular'], function(angular) {
 			if(item.path) {
 				$location.url(item.path);
 			}
+		}
+		
+		//跳转
+		$scope.getUrl = function(url){
+			$location.path(url);
 		}
 	}])
 });

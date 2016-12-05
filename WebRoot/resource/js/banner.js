@@ -5,9 +5,9 @@ $(function(){ //页面加载完毕才执行
 	var images_height = '234px';
 	//图片路径/链接(数组形式):
 	var images_url = [
-		'img/1.jpg',
-		'img/2.jpg',
-		'img/3.jpg'
+		'../resource/img/1.jpg',
+		'../resource/img/2.jpg',
+		'../resource/img/3.jpg'
 	];
 	var images_count = images_url.length;
 	//console.log(images_count);

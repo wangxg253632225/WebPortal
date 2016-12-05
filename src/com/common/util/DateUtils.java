@@ -18,6 +18,9 @@ public class DateUtils {
             "yyyy-MM-dd");
     private static final SimpleDateFormat timeFormat = new SimpleDateFormat(
             "HH:mm:ss");
+    private static final SimpleDateFormat monthFormat = new SimpleDateFormat(
+            "MM-dd");
+    private static final String DATETIMEPATTERN = "yyyy-MM-dd HH:mm:ss";
 
 //    public static void main(String[] args) {
 ////        String str = getCurrentDatetime("1461220971");
@@ -416,5 +419,17 @@ public class DateUtils {
         SimpleDateFormat format = (SimpleDateFormat) datetimeFormat.clone();
         format.applyPattern(pattern);
         return format.parse(datetime);
+    }
+
+    public static String StrToStr(String datetime,String pattern){
+        String dateTime = "";
+        try {
+            Date date = parseDatetime(datetime, DateUtils.DATETIMEPATTERN);
+            dateTime = formatDatetime(date,pattern);
+        }catch(Exception e){
+            System.out.print("时间字符串转字符串失败");
+            e.printStackTrace();
+        }
+        return dateTime;
     }
 }

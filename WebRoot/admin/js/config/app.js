@@ -57,7 +57,32 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 				$controllerProvider: $controllerProvider
 			};
 			$routeProvider.
+			/** 后台登陆 */
+			when('/login', {
+				templateUrl: 'templates/login/login.html',
+				resolve: {
+					keyName: function($q) {
+						var deferred = $q.defer();
+						require(['js/templates/login/login'], function(controller) {
+							deferred.resolve();
+						});
+						return deferred.promise;
+					}
+				}
+			}).
 			/** 管理员管理首页 */
+			when('/index', {
+				templateUrl: 'templates/index.html',
+				resolve: {
+					keyName: function($q) {
+						var deferred = $q.defer();
+						require(['js/templates/index'], function(controller) {
+							deferred.resolve();
+						});
+						return deferred.promise;
+					}
+				}
+			}).
 			when('/admin/index', {
 					resolve: {
 						keyName: function($q) {
@@ -92,7 +117,7 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 					}
 				}).
 			otherwise({
-				redirectTo: '/index' //angular就喜欢斜杠开头
+				redirectTo: '/login' //angular就喜欢斜杠开头
 			});
 		}
 	]).run(function($rootScope, $location, $http) {
