@@ -11,10 +11,6 @@ define(['angular'], function(angular) {
 				name: '管理员列表',
 				path: '/admin/list',
 				icon: 'icon-double-angle-right'
-			},{
-				name: '新增管理员',
-				path: '/admin/add',
-				icon: 'icon-double-angle-right'
 			}]
 		},{
 			name: '新闻中心',

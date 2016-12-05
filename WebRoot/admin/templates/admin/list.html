@@ -1,7 +1,7 @@
 <div ng-controller="adminListCtrl">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="page-header">
+			<div class="page-header clearfix gov_tb_padding">
 				<h1>
 					管理员管理
 					<small>
@@ -9,6 +9,12 @@
 						列表
 					</small>
 				</h1>
+				<div class="btn-group pull-right gov_right">
+					<button class="btn btn-sm btn-purple" ng-click="addAdmin();">
+						<i class="icon-plus bigger-125"></i>
+						新增
+					</button>
+				</div>
 			</div>
 
 			<div class="table-responsive">
@@ -23,6 +29,8 @@
 							</th>
 							<th>管理员名称</th>
 							<th>创建时间</th>
+							<th>更新时间</th>
+							<th>备注</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -36,19 +44,21 @@
 								</label>
 							</td>
 
-							<td>{{user.USERNAME}}</td>
-							<td>{{user.CREATE_TIME}}</td>
+							<td>{{user.username}}</td>
+							<td>{{user.createDate}}</td>
+							<td>{{user.lastUpdateDate}}</td>
+							<td>{{user.remark}}</td>
 							<td>
 								<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 									<a class="blue" href="#">
 										<i class="icon-zoom-in bigger-130"></i>
 									</a>
 
-									<a class="green" href="#">
+									<a class="green" ng-click="goEdit(user.id);">
 										<i class="icon-pencil bigger-130"></i>
 									</a>
 
-									<a class="red" href="#">
+									<a class="red" ng-click="goDel(user.id,user.username);">
 										<i class="icon-trash bigger-130"></i>
 									</a>
 								</div>
