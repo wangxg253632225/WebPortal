@@ -1,11 +1,9 @@
 package com.common.config;
 
 
-import com.controller.ArticleCategoryController;
-import com.controller.ArticleController;
-import com.controller.FriendLinkController;
-import com.controller.UserController;
+import com.controller.*;
 import com.interceptor.ExceptionInterceptor;
+import com.interceptor.SessionInterceptor;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
@@ -65,6 +63,7 @@ public class WebConfig extends JFinalConfig {
      */
     public void configInterceptor(Interceptors me) {
         me.add(new ExceptionInterceptor());
+        me.add(new SessionInterceptor());
     }
 
     /**

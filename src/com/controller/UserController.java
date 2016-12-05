@@ -1,18 +1,18 @@
 package com.controller;
 
 import com.common.result.JsonResult;
-import com.common.util.DesEncryptionUtils;
 import com.common.util.JsonMapUtils;
 import com.common.util.StringUtils;
 import com.common.validator.UserValidator;
 import com.exception.ServiceException;
+import com.interceptor.SessionInterceptor;
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.StrKit;
 import com.jfinal.log.Log;
-import com.model.FriendLinkDao;
 import com.model.UserDao;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,17 +24,21 @@ import java.util.Map;
 public class UserController extends Controller {
     private static Log logger = Log.getLog(UserController.class);
 
-
+    /**用户登录*/
+    @Clear(SessionInterceptor.class)
     @Before(UserValidator.class)
     public void login() throws Exception {
         String username = getPara("username");
         String password = getPara("password");
-
+        String sessionToken ;
         List<UserDao> users = UserDao.userDao.getUser(username, password);
         if (users.size() == 0) {
             throw new ServiceException("用户名不存在或密码错误");
+        }else{
+            sessionToken  = StringUtils.getUUID();
+            setSessionAttr("sessionToken ", sessionToken);
         }
-        renderJson(new JsonResult("success", null, "0", null, null));
+        renderJson(new JsonResult("success", null, "0", sessionToken , null));
     }
 
     public void getList() throws Exception {
@@ -119,6 +123,20 @@ public class UserController extends Controller {
             renderJson(new JsonResult("success", null, "0", null, null));
         } else {
             renderJson(new JsonResult("删除失败", null, "1", null, null));
+        }
+    }
+
+    /**
+     * 用户注销登录
+     */
+    public void loginOut(){
+        HttpSession session = getSession();
+        if(StringUtils.isEmpty(session.getAttribute("username"))){
+            throw new ServiceException("用户不存在或未登录！");
+        }else{
+            session.removeAttribute("username"); /**session中移除改username用户信息删除*/
+            session.invalidate();
+            renderJson(new JsonResult("用户退出成功",null,"0",null,null));
         }
     }
 
