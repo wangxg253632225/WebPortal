@@ -4,12 +4,10 @@ import com.common.util.DateUtils;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IBean;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
 import com.model.bean.Article;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by lizy_java on 2016/11/29.
@@ -61,6 +59,62 @@ public class ArticleDao extends Article<ArticleDao> implements IBean {
         return resultData;
     }
 
+    public Map<String,Object> articleList(Map<String,Object> data) {
+        Map<String,Object> resultData = new HashMap<String,Object>();
+        String selectSql = "select ga.id,ga.cate_id,ga.name,ga.author,ga.title,ga.is_top,gac.cate_name";
+        StringBuffer fromSql = new StringBuffer(" from gov_article ga,gov_article_category gac ")
+                .append(" where ga.cate_id = gac.id ")
+                .append( "and gac.cate_flag = '"+data.get("type")+"'");
+        if(data.get("cate_id") != null){
+            fromSql.append(" and gac.id ="+data.get("cate_id"));
+        }
+        Page<ArticleDao> articleDaos = articleDao.paginate((Integer)data.get("pageNum"),(Integer)data.get("pageSize"),selectSql,fromSql.toString());
+        List<Map<String,Object>> list = new ArrayList<Map<String, Object>>();
+        resultData.put("pageNumber", articleDaos.getPageNumber());
+        resultData.put("pageSize", articleDaos.getPageSize());
+        resultData.put("totalRow", articleDaos.getTotalRow());
+        resultData.put("totalPage", articleDaos.getTotalPage());
+        resultData.put("firstPage", articleDaos.isFirstPage());
+        resultData.put("lastPage", articleDaos.isLastPage());
+        for(int i = 0 ; i < articleDaos.getList().size(); i ++ ){
+            Map<String,Object>  returnMap = new HashMap();
+            returnMap.put("id",articleDaos.getList().get(i).get("id"));
+            returnMap.put("cate_id",articleDaos.getList().get(i).get("cate_id"));
+            returnMap.put("name",articleDaos.getList().get(i).get("name"));
+            returnMap.put("author",articleDaos.getList().get(i).get("author"));
+            returnMap.put("title",articleDaos.getList().get(i).get("title"));
+            returnMap.put("is_top",articleDaos.getList().get(i).get("is_top"));
+            returnMap.put("create_date",DateUtils.formatDatetime((Date) articleDaos.getList().get(i).get("create_date"),"yyyy-MM-dd"));
+            returnMap.put("cate_name",articleDaos.getList().get(i).get("cate_name"));
+            list.add(returnMap);
+        }
+        resultData.put("list",list);
+        return resultData;
+    }
+
+    public Map<String,Object> detail(Long id){
+        Map<String,Object> resultData = new HashMap<String,Object>();
+        ArticleDao article = articleDao.findById(id);
+        resultData.put("current",article);
+        String selectSql = "select id from gov_article order by create_date asc";
+        List<Long> ids = Db.query(selectSql);
+        for(int i=0,length=ids.size();i<length;i++){
+            if(ids.get(i) == id){
+                if(i == 0){
+                    resultData.put("before",null);
+                    resultData.put("after",articleDao.findById(ids.get(i+1)));
+                }else if(i == length-1){
+                    resultData.put("before",articleDao.findById(ids.get(i-1)));
+                    resultData.put("after",null);
+                }else{
+                    resultData.put("before",articleDao.findById(ids.get(i-1)));
+                    resultData.put("after",articleDao.findById(ids.get(i+1)));
+            }
+            }
+        }
+        return resultData;
+    }
+
     public List<Map<String,Object>> list(Map<String,Object> data) {
         Map<String,Object> resultData = new HashMap<String,Object>();
         String selectSql = "select ga.id,ga.cate_id,ga.name,ga.author,ga.title,ga.is_top,ga.create_date,gac.cate_name";
@@ -70,6 +124,7 @@ public class ArticleDao extends Article<ArticleDao> implements IBean {
         if(data.get("cate_id") != null){
             fromSql.append(" and gac.id ="+data.get("cate_id"));
         }
+        fromSql.append(" order by ga.create_date desc ");
         Page<ArticleDao> articleDaos = articleDao.paginate((Integer)data.get("pageNum"),(Integer)data.get("pageSize"),selectSql,fromSql.toString());
         List<Map<String,Object>> list = new ArrayList<Map<String, Object>>();
         for(int i = 0 ; i < articleDaos.getList().size(); i ++ ){
@@ -80,7 +135,7 @@ public class ArticleDao extends Article<ArticleDao> implements IBean {
             returnMap.put("author",articleDaos.getList().get(i).get("author"));
             returnMap.put("title",articleDaos.getList().get(i).get("title"));
             returnMap.put("is_top",articleDaos.getList().get(i).get("is_top"));
-            returnMap.put("is_top",DateUtils.StrToStr((String)articleDaos.getList().get(i).get("create_date"),"MM-dd"));
+            returnMap.put("create_date",DateUtils.formatDatetime((Date) articleDaos.getList().get(i).get("create_date"),"MM-dd"));
             returnMap.put("cate_name",articleDaos.getList().get(i).get("cate_name"));
             list.add(returnMap);
         }

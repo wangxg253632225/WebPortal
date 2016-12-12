@@ -1,26 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="../resource/js/front/footer.js"></script>
 <div class="footer">
     <div class="top">
-        <ul>
-            <li>
-                <a href="#">河池学院</a>
-            </li>
-            <li>
-                <a href="#">中国电网</a>
-            </li>
-            <li>
-                <a href="#">山谷网</a>
-            </li>
-            <li>
-                <a href="#">百度</a>
-            </li>
-            <li>
-                <a href="#">京东</a>
-            </li>
-            <li>
-                <a href="#">淘宝</a>
-            </li>
-        </ul>
+        <ul id="friendLink"></ul>
     </div>
     <div class="content">
         &copy;版权所有：万宁兴隆发展有限公司&nbsp;Copyright@2011 All Rights Reserved

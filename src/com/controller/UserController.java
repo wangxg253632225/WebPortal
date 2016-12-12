@@ -26,10 +26,20 @@ public class UserController extends Controller {
 
     /**用户登录*/
     @Clear(SessionInterceptor.class)
-    @Before(UserValidator.class)
+//    @Before(UserValidator.class)
     public void login() throws Exception {
-        String username = getPara("username");
-        String password = getPara("password");
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        try {
+            map = JsonMapUtils.getRequestObject(this.getRequest());
+        } catch (Exception e) {
+            e.printStackTrace();
+            renderJson(new JsonResult("参入的参数有误", null, "1", null, null));
+        }
+
+        String username = (String)map.get("username");
+        String password = (String)map.get("password");
+
         String sessionToken ;
         List<UserDao> users = UserDao.userDao.getUser(username, password);
         if (users.size() == 0) {

@@ -3,6 +3,8 @@ package com.controller;
 import com.common.result.JsonResult;
 import com.common.util.DesEncryptionUtils;
 import com.common.util.JsonMapUtils;
+import com.interceptor.SessionInterceptor;
+import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.model.ArticleDao;
 
@@ -143,6 +145,7 @@ public class ArticleController extends Controller {
         }
     }
 
+    @Clear(SessionInterceptor.class)
     public void list(){
         Map<String,Object> map =  new HashMap<String,Object>();
         try{
@@ -161,6 +164,44 @@ public class ArticleController extends Controller {
         String type = getPara("type");
         map.put("type",type);
         List<Map<String,Object>> resultDate = ArticleDao.articleDao.list(map);
+        renderJson(new JsonResult("success", null, "0", resultDate, null));
+    }
+
+    @Clear(SessionInterceptor.class)
+    public void articleList(){
+        Map<String,Object> map =  new HashMap<String,Object>();
+        try{
+            map = JsonMapUtils.getRequestObject(this.getRequest());
+        }catch (Exception e){
+            renderJson(new JsonResult("参数的参数有误", null, "1", null, null));
+            return;
+        }
+
+        if(map.get("pageNum") == null){
+            map.put("pageNum",1);
+        }
+        if(map.get("pageSize") == null){
+            map.put("pageSize",10);
+        }
+        String type = getPara("type");
+        map.put("type",type);
+        Map<String,Object> resultDate = ArticleDao.articleDao.articleList(map);
+        renderJson(new JsonResult("success", null, "0", resultDate, null));
+    }
+
+    @Clear(SessionInterceptor.class)
+    public void detail(){
+        Long id = getParaToLong("id");
+        Map<String,Object> resultDate = ArticleDao.articleDao.detail(id);
+        ArticleDao current = (ArticleDao)resultDate.get("current");
+        try{
+            String content = DesEncryptionUtils.decrypt((String) current.get("content"));
+            current.put("content",content);
+        }catch (Exception e){
+            renderJson(new JsonResult("解析文章内容出错", null, "1", null, null));
+            return;
+        }
+        resultDate.put("current",current);
         renderJson(new JsonResult("success", null, "0", resultDate, null));
     }
 }

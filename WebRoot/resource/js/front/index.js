@@ -19,14 +19,13 @@ $(function(){
 					for(var i=0;i<length;i++){
 						strHtml +='<div class="line">'
 								 +'    <div>'
-								 +'    		<a href="#" title="'+list[i].name+'">'+list[i].name+'</a>'
+								 +'    		<a href="/article?type=news&id='+list[i].id+'" title="'+list[i].name+'">'+list[i].name+'</a>'
 								 +'    </div>'
 								 +'    <span class="date">('+list[i].create_date+')</span>'
 								 +'</div>'
 					}
 					
 					document.getElementById('newsList').innerHTML = strHtml;
-					
 				}
 			}
 		});

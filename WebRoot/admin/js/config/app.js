@@ -1,9 +1,10 @@
 define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 		,'js/common/function'
+		,'js/server/factory'
 		,'js/common/model'
 		,'js/common/httpError'], function(angular, require) {
 	
-	var app = angular.module('webapp', ['ngRoute','ngMaterial','c.tri','mdhttperror']);
+	var app = angular.module('webapp', ['ngRoute','ngMaterial','server','c.tri','mdhttperror']);
 	var modulelist = [];
 
 	function existModule(moduleName) {
@@ -121,32 +122,22 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 			});
 		}
 	]).run(function($rootScope, $location, $http) {
+		
 		// 子模块面包屑结束
 		$rootScope.go = function(path, title) {
-//			if(title) {
-//				// 面包屑添加模式开始
-//				var i = {
-//					path: path,
-//					title: title
-//				}
-//				$rootScope.modCrumb.push(i);
-//				publicmodel.breadCrumb = $rootScope.modCrumb;
-//			}
-//			for(var i = $rootScope.modCrumb.length; i--;) {
-//				if(path[path.length - 1] == '/') {
-//					path = path.substring(0, path.length - 1);
-//				}
-//				if($rootScope.modCrumb[i]['path'] == path.toString()) {
-//					var len = $rootScope.modCrumb.length;
-//					var howMany = len - i + 1;
-//					var start = i + 1;
-//					$rootScope.modCrumb.splice(start, howMany);
-//					publicmodel.breadCrumb = $rootScope.modCrumb;
-//					break;
-//				}
-//			}
 			$location.path(path);
 		};
+		
+		// 登录判断开始
+		var time = (new Date().getTime() / 1000).toFixed(0);
+		console.log(sessionStorage.User);
+//		console.log(JSON.parse(sessionStorage.User));
+		if((time - sessionStorage.LoginTime) > 600) {
+			$rootScope.go('/login');
+		}
+		if(!sessionStorage.User || sessionStorage.User.data == '') {
+			$rootScope.go('/login');
+		}
 		
 	}).directive('header', function() {
 		return {

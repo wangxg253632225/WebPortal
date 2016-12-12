@@ -11,7 +11,6 @@
 <head>
     <meta charset="utf-8" />
     <title>万宁发展首页</title>
-    <link rel="icon" href="../resource/img/logo.ico" type="image/x-ico">
     <!-- 加载公共的文件 -->
     <%@include file="public.jsp" %>
     

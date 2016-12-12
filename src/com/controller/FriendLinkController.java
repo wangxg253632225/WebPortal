@@ -4,6 +4,8 @@ import com.common.result.JsonResult;
 import com.common.util.JsonMapUtils;
 import com.common.util.StringUtils;
 import com.exception.ServiceException;
+import com.interceptor.SessionInterceptor;
+import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.model.ArticleCategoryDao;
 import com.model.FriendLinkDao;
@@ -103,6 +105,20 @@ public class FriendLinkController extends Controller {
         }else{
             renderJson(new JsonResult("删除失败", null, "1", null, null));
         }
+    }
+
+    /**
+     * 获取友情链接列表
+     */
+    @Clear(SessionInterceptor.class)
+    public void list(){
+        List<FriendLinkDao> data = new ArrayList<FriendLinkDao>();
+        try{
+            data = FriendLinkDao.friendDao.list();
+        }catch (Exception e ){
+            renderJson(new JsonResult("fail", null, "0", null, null));
+        }
+        renderJson(new JsonResult("success", null, "0", data, null));
     }
 
 

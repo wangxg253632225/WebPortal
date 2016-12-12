@@ -82,5 +82,13 @@ public class FriendLinkDao extends FriendLink<FriendLinkDao> implements IBean {
         return friendDao.deleteById(id);
     }
 
+    /**
+     * 获取友情链接列表
+     * @return
+     */
+    public List<FriendLinkDao> list() {
+        String sql = "select * from gov_friendship_link order by level asc";
+        return friendDao.find(sql);
+    }
 
 }
