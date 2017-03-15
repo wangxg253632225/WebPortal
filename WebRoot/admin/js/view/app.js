@@ -13,6 +13,28 @@ define(['angular'], function(angular) {
 				icon: 'icon-double-angle-right'
 			}]
 		},{
+			name: '企业概况',
+			path: '',
+			icon: 'icon-desktop',
+			children: [{
+				name: '概况管理',
+				path: '/news/cate_list',
+				icon: 'icon-desktop'
+			}]
+		},{
+			name: '公司业务',
+			path: '/business/index',
+			icon: 'icon-desktop',
+			children: [{
+				name: '业务分类',
+				path: '/business/business_cate_list',
+				icon: 'icon-desktop'
+			},{
+				name: '业务管理',
+				path: '/business/business_list',
+				icon: 'icon-desktop'
+			}]
+		},{
 			name: '新闻中心',
 			path: '/news/index',
 			icon: 'icon-desktop',
@@ -26,16 +48,25 @@ define(['angular'], function(angular) {
 				icon: 'icon-desktop'
 			}]
 		},{
-			name: '通知公告',
+			name: '人力资源',
 			path: '/news/index',
 			icon: 'icon-desktop',
 			children: [{
-				name: '通知公告分类',
+				name: '人力资源分类',
 				path: '/news/cate_list',
 				icon: 'icon-desktop'
 			},{
-				name: '通知公告管理',
+				name: '人力资源管理',
 				path: '/news/news_list',
+				icon: 'icon-desktop'
+			}]
+		},{
+			name: '联系我们',
+			path: '/news/index',
+			icon: 'icon-desktop',
+			children: [{
+				name: '信息维护',
+				path: '/news/cate_list',
 				icon: 'icon-desktop'
 			}]
 		},{

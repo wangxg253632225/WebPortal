@@ -64,7 +64,7 @@ public class WebConfig extends JFinalConfig {
      */
     public void configInterceptor(Interceptors me) {
         me.add(new ExceptionInterceptor());
-        me.add(new SessionInterceptor());
+//        me.add(new SessionInterceptor());
     }
 
     /**

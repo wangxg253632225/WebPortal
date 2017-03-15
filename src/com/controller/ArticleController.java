@@ -204,4 +204,35 @@ public class ArticleController extends Controller {
         resultDate.put("current",current);
         renderJson(new JsonResult("success", null, "0", resultDate, null));
     }
+
+    public void findList(){
+        Map<String,Object> map =  new HashMap<String,Object>();
+        try{
+            map = JsonMapUtils.getRequestObject(this.getRequest());
+        }catch (Exception e){
+            renderJson(new JsonResult("参数的参数有误", null, "1", null, null));
+            return;
+        }
+
+        if(map.get("pageNum") == null){
+            map.put("pageNum",1);
+        }
+        if(map.get("pageSize") == null){
+            map.put("pageSize",10);
+        }
+
+//        map.put("pageNum",getParaToInt("pageNum"));
+//        map.put("pageSize",getParaToInt("pageSize"));
+//        if(map.get("pageNum") == null){
+//            map.put("pageNum",1);
+//        }
+//        if(map.get("pageSize") == null){
+//            map.put("pageSize",10);
+//        }
+//        map.put("type",getPara("type"));
+//        map.put("cate_id",getPara("cate_id"));
+
+        Map<String,Object> resultDate = ArticleDao.articleDao.findArticleList(map);
+        renderJson(new JsonResult("success", null, "0", resultDate, null));
+    }
 }

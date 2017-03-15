@@ -29,16 +29,13 @@
 						新闻中心
 					</div>
 					<div class="articleLeftContent">
-						<ul>
-							<li>
-								<a href="">热门新闻</a>
-							</li>
-							<li>
-								<a href="">焦点新闻</a>
-							</li>
-							<li>
-								<a href="">新闻快讯</a>
-							</li>
+						<ul id="articleCates">
+							<%--<li>--%>
+								<%--<a href="">焦点新闻</a>--%>
+							<%--</li>--%>
+							<%--<li>--%>
+								<%--<a href="">新闻快讯</a>--%>
+							<%--</li>--%>
 						</ul>
 					</div>
 				</div>

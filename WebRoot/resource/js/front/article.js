@@ -1,6 +1,7 @@
 $(function(){
 	
 	var id = getUrlParam("id");
+	var type = getUrlParam("type");
 	
 	/** 获取文章详情开始 */
 	function getArticleDetail(){
@@ -11,7 +12,6 @@ $(function(){
 			dataType:"json",
 			async: true,
 			success:function(response){
-				console.log(response);
 				if(response.code == "0"){
 					var strHtml = "";
 					var current = response.data.current;
@@ -44,4 +44,30 @@ $(function(){
 	//获取文章详情
 	getArticleDetail();
 	/** 获取文章详情结束 */
+
+	/** 获取文章分类开始 */
+	function getArticleCates(){
+		$.ajax({
+			type: "POST",
+			url: "/articleCategory/findList",
+			data: {"type":(type?type.toString():null)},
+			dataType:"json",
+			async: true,
+			success:function(response){
+				console.log(response);
+				if(response.code == "0"){
+					var strHtml = "";
+					if(response.data){
+						for(var i = 0,length=response.data.length;i<length;i++){
+							strHtml += '<li><a href="/category?type='+response.data[i].cate_flag+'&id='+response.data[i].id+'">'+response.data[i].cate_name+'</a></li>';
+						}
+					}
+					document.getElementById('articleCates').innerHTML = strHtml;
+				}
+			}
+		});
+	}
+	//获取文章详情
+	getArticleCates();
+	/** 获取文章分类开始 */
 });

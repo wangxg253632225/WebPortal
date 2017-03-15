@@ -84,6 +84,14 @@ public class ArticleCategoryController extends Controller {
 
     }
 
+    public void findList(){
+        if(getPara("type") == null){
+            renderJson(new JsonResult("请传入类型", null, "1", null, null));
+        }
+        String type = getPara("type");
+        List<ArticleCategoryDao> daos = ArticleCategoryDao.articelCategoryDao.getArticleCategorys(type);
+        renderJson(new JsonResult("success", null, "0", daos, null));
+    }
 
 
 

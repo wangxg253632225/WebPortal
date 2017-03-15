@@ -85,27 +85,38 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 				}
 			}).
 			when('/admin/index', {
-					resolve: {
-						keyName: function($q) {
-							var deferred = $q.defer();
-							require(['js/templates/admin/index'], function(controller) {
-								deferred.resolve();
-							});
-							return deferred.promise;
-						}
+				resolve: {
+					keyName: function($q) {
+						var deferred = $q.defer();
+						require(['js/templates/admin/index'], function(controller) {
+							deferred.resolve();
+						});
+						return deferred.promise;
 					}
-				}).
+				}
+			}).
+			when('/business/index', {
+				resolve: {
+					keyName: function($q) {
+						var deferred = $q.defer();
+						require(['js/templates/business/index'], function(controller) {
+							deferred.resolve();
+						});
+						return deferred.promise;
+					}
+				}
+			}).
 			when('/news/index', {
-					resolve: {
-						keyName: function($q) {
-							var deferred = $q.defer();
-							require(['js/templates/news/index'], function(controller) {
-								deferred.resolve();
-							});
-							return deferred.promise;
-						}
+				resolve: {
+					keyName: function($q) {
+						var deferred = $q.defer();
+						require(['js/templates/news/index'], function(controller) {
+							deferred.resolve();
+						});
+						return deferred.promise;
 					}
-				}).
+				}
+			}).
 			when('/link/index', {
 					resolve: {
 						keyName: function($q) {

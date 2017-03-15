@@ -1,14 +1,14 @@
 define(['angular'], function(angular) {
-	var newsList = angular.module('newsList', []);
+	var businessList = angular.module('businessList', []);
 
-	newsList.controller('newsListCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter,$mdDialog) {
+	businessList.controller('businessListCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter,$mdDialog) {
 		
 		$scope.selected = new Array();
 		$scope.pageSizes = [2,5,10,20];
 		//变量  
 		$scope.pageNum = 1;
 		$scope.totalRow = 0;
-		$scope.pageSize = 10;
+		$scope.pageSize = 5;
 		$scope.totalPage = 0;
 		$scope.firstPage = true;
 		$scope.lastPage = true;
@@ -24,7 +24,7 @@ define(['angular'], function(angular) {
 			
 			$http({
 				method: 'POST',
-				url: adminUrl + "article/getList?type=news",
+				url: adminUrl + "article/getList?type=business",
 				data:{
 					pageNum:$scope.pageNum,
 					pageSize:$scope.pageSize
@@ -99,11 +99,11 @@ define(['angular'], function(angular) {
 		});
 		
 		$scope.addArticle = function(){
-			$location.path('/news/news_add');
+			$location.path('/business/business_add');
 		}
 		
 		$scope.goEdit = function(id){
-			$location.url('/news/news_edit?id='+id);
+			$location.url('/business/business_edit?id='+id);
 		}
 		
 		//弹出删除选择框
@@ -268,5 +268,5 @@ define(['angular'], function(angular) {
 		}
 
 	});
-	return newsList;
+	return businessList;
 });
