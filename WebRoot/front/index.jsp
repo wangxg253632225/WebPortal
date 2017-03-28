@@ -14,8 +14,8 @@
     <!-- 加载公共的文件 -->
     <%@include file="public.jsp" %>
     
-    <script src="../resource/js/front/index.js"></script>
-    <script src="../resource/js/front/activity.js"></script>
+    <script src="${ctx}/resource/js/front/index.js"></script>
+    <script src="${ctx}/resource/js/front/activity.js"></script>
 </head>
 <body>
 <div class="main">
@@ -50,7 +50,7 @@
                 <div class="title">
                     <span>公司业务</span>
                     <a href="/category?type=business">
-                        <img src="../resource/img/more.gif"/>
+                        <img src="${ctx}/resource/img/more.gif"/>
                     </a>
                 </div>
                 <div class="list" id="businessList">
@@ -69,7 +69,7 @@
                 <div class="title">
                     <span>联系我们</span>
                     <a href="#">
-                        <img src="../resource/img/more.gif"/>
+                        <img src="${ctx}/resource/img/more.gif"/>
                     </a>
                 </div>
                 <div class="list">
@@ -103,7 +103,7 @@
                 <div class="list">
                     <div id="moveGeneralJob" style="width: 1336px;height: 210px;position: relative;">
                         <div class="gerenal_cnt">
-                            <img src="../resource/img/general.gif"/>
+                            <img src="${ctx}/resource/img/general.gif"/>
                             <div class="cnt_detail">
                                 <div class="matter">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;海口市城市建设投资有限公司成立于2003年6月11日，现为国有控股公司。
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div class="job_cnt">
-                            <img src="../resource/img/job.gif"/>
+                            <img src="${ctx}/resource/img/job.gif"/>
                             <div class="cnt_detail">
                                 <div class="matter">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;海口市城市建设投资有限公司成立于2003年6月11日，现为国有控股公司。公司主要职能为融资、政府投资项目建设管理、房地产开发等。

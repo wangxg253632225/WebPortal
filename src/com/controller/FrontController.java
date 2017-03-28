@@ -26,4 +26,8 @@ public class FrontController extends Controller {
         renderJsp("general.jsp");
     }
 
+    public void manpower(){
+        renderJsp("manpower.jsp");
+    }
+
 }

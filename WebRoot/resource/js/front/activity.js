@@ -2,18 +2,18 @@ $(function(){ //页面加载完毕才执行
 
 	//图片路径/链接(数组形式):
 	var activitys = [
-		{imageUrl:"../resource/img/actity01.jpg",title:"actity01"},
-		{imageUrl:"../resource/img/actity02.jpg",title:"actity02"},
-		{imageUrl:"../resource/img/actity03.jpg",title:"actity03"},
-		{imageUrl:"../resource/img/actity04.jpg",title:"actity04"},
-		{imageUrl:"../resource/img/actity05.jpg",title:"actity05"},
-		{imageUrl:"../resource/img/actity06.jpg",title:"actity06"},
-		{imageUrl:"../resource/img/actity07.jpg",title:"actity07"},
-		{imageUrl:"../resource/img/actity08.jpg",title:"actity08"},
-		{imageUrl:"../resource/img/actity09.jpg",title:"actity09"},
-		{imageUrl:"../resource/img/actity10.jpg",title:"actity10"},
-		{imageUrl:"../resource/img/actity11.jpg",title:"actity11"},
-		{imageUrl:"../resource/img/actity12.jpg",title:"actity12"},
+		{imageUrl:_CTX+"/resource/img/actity01.jpg",title:"actity01"},
+		{imageUrl:_CTX+"/resource/img/actity02.jpg",title:"actity02"},
+		{imageUrl:_CTX+"/resource/img/actity03.jpg",title:"actity03"},
+		{imageUrl:_CTX+"/resource/img/actity04.jpg",title:"actity04"},
+		{imageUrl:_CTX+"/resource/img/actity05.jpg",title:"actity05"},
+		{imageUrl:_CTX+"/resource/img/actity06.jpg",title:"actity06"},
+		{imageUrl:_CTX+"/resource/img/actity07.jpg",title:"actity07"},
+		{imageUrl:_CTX+"/resource/img/actity08.jpg",title:"actity08"},
+		{imageUrl:_CTX+"/resource/img/actity09.jpg",title:"actity09"},
+		{imageUrl:_CTX+"/resource/img/actity10.jpg",title:"actity10"},
+		{imageUrl:_CTX+"/resource/img/actity11.jpg",title:"actity11"},
+		{imageUrl:_CTX+"/resource/img/actity12.jpg",title:"actity12"},
 	];
 	var images_count = activitys.length;
 	//console.log(images_count);

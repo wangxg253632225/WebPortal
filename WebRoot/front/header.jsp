@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="header">
     <%--<img src="../resource/img/top.png" width="1000" height="214"/>--%>
-    <img src="../resource/img/top_1.jpg" width="1000" height="214"/>
+    <img src="${ctx}/resource/img/top_1.jpg" width="1000" height="214"/>
     <div class="nav">
         <ul>
             <li>
@@ -41,10 +41,12 @@
                 </a>
             </li>
             <li>
-                <div class="left">
-                    <span class="first">人力资源</span>
-                    <span class="last">Job</span>
-                </div>
+                <a href="/manpower">
+                    <div class="left">
+                        <span class="first">人力资源</span>
+                        <span class="last">Job</span>
+                    </div>
+                </a>
                 <div class="divider"></div>
             </li>
             <li>
@@ -52,14 +54,14 @@
                     <span class="first">联系我们</span>
                     <span class="last">Call me</span>
                 </div>
-                <div class="divider"></div>
+                <%--<div class="divider"></div>--%>
             </li>
-            <li>
-                <div class="left">
-                    <span class="first">内部论坛</span>
-                    <span class="last">BBS</span>
-                </div>
-            </li>
+            <%--<li>--%>
+                <%--<div class="left">--%>
+                    <%--<span class="first">内部论坛</span>--%>
+                    <%--<span class="last">BBS</span>--%>
+                <%--</div>--%>
+            <%--</li>--%>
         </ul>
     </div>
 </div>

@@ -7,7 +7,7 @@
     <!-- 加载公共的文件 -->
     <%@include file="public.jsp" %>
 
-	<script src="../resource/js/front/articleCate.js"></script>
+	<script src="${ctx}/resource/js/front/articleCate.js"></script>
     
 </head>
 <body>
