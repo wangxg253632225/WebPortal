@@ -7,7 +7,7 @@ $(function(){
 	function getArticleDetail(){
 		$.ajax({
 		 	type: "POST",
-		 	url: "/article/detail",
+		 	url: _CTX+"/article/detail",
 			data: {"id":id},
 			dataType:"json",
 			async: true,
@@ -24,13 +24,13 @@ $(function(){
 					 			 +'<div class="articleRightContent">'+current.content+'</div>'
 								 +'<div class="articlePage">';
 					if(before){
-						strHtml +='<div>上一篇：<a href="/article?type=news&id='+before.id+'">'+before.name+'</a></div>';
+						strHtml +='<div>上一篇：<a href="'+_CTX+'/article?type=news&id='+before.id+'">'+before.name+'</a></div>';
 					}else{
 						strHtml +='<div>上一篇：<a href="javascript:void(0;)">没有上一篇了</a></div>';
 					}
 					
 					if(after){
-						strHtml +='<div>下一篇：<a href="/article?type=news&id='+after.id+'">'+after.name+'</a></div>';
+						strHtml +='<div>下一篇：<a href="'+_CTX+'/article?type=news&id='+after.id+'">'+after.name+'</a></div>';
 					}else{
 						strHtml +='<div>下一篇：<a href="javascript:void(0;)">没有下一篇了</a></div>';
 					}
@@ -49,7 +49,7 @@ $(function(){
 	function getArticleCates(){
 		$.ajax({
 			type: "POST",
-			url: "/articleCategory/findList",
+			url: _CTX+"/articleCategory/findList",
 			data: {"type":(type?type.toString():null)},
 			dataType:"json",
 			async: true,
@@ -59,7 +59,7 @@ $(function(){
 					var strHtml = "";
 					if(response.data){
 						for(var i = 0,length=response.data.length;i<length;i++){
-							strHtml += '<li><a href="/category?type='+response.data[i].cate_flag+'&id='+response.data[i].id+'">'+response.data[i].cate_name+'</a></li>';
+							strHtml += '<li><a href="'+_CTX+'/category?type='+response.data[i].cate_flag+'&id='+response.data[i].id+'">'+response.data[i].cate_name+'</a></li>';
 						}
 					}
 					document.getElementById('articleCates').innerHTML = strHtml;

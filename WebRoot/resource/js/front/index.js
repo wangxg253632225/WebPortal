@@ -7,11 +7,11 @@ $(function(){
 	getBusinessList();
 
     $('#general').mouseenter(function(){
-        $('#general_job_head').css("background-image"," url(../resource/img/general.png)");
+        $('#general_job_head').css("background-image"," url("+_CTX+"/resource/img/general.png)");
         $('#moveGeneralJob').stop().animate({top:0},500)
     });
     $('#job').mouseenter(function(){
-        $('#general_job_head').css("background-image"," url(../resource/img/job.png)");
+        $('#general_job_head').css("background-image"," url("+_CTX+"/resource/img/job.png)");
         $('#moveGeneralJob').stop().animate({top:-220},500)
     });
 
@@ -25,7 +25,7 @@ function getNewsList(){
 	};
 	$.ajax({
 		type: "POST",
-		url: "/article/list?type=news",
+		url: _CTX+"/article/list?type=news",
 		data: JSON.stringify(param),
 		dataType:"json",
 		async: true,
@@ -37,7 +37,7 @@ function getNewsList(){
 				for(var i=0;i<length;i++){
 					strHtml +='<div class="line">'
 						+'    <div>'
-						+'    		<a href="/article?type=news&id='+list[i].id+'" title="'+list[i].name+'">'+list[i].name+'</a>'
+						+'    		<a href="'+_CTX+'/article?type=news&id='+list[i].id+'" title="'+list[i].name+'">'+list[i].name+'</a>'
 						+'    </div>'
 						+'    <span class="date">('+list[i].create_date+')</span>'
 						+'</div>'
@@ -58,7 +58,7 @@ function getBusinessList(){
 	};
 	$.ajax({
 		type: "POST",
-		url: "/article/list?type=business",
+		url: _CTX+"/article/list?type=business",
 		data: JSON.stringify(param),
 		dataType:"json",
 		async: true,
@@ -70,7 +70,7 @@ function getBusinessList(){
 				for(var i=0;i<length;i++){
 					strHtml +='<div class="line">'
 						+'    <div>'
-						+'    		<a href="/article?type=business&id='+list[i].id+'" title="'+list[i].name+'">'+list[i].name+'</a>'
+						+'    		<a href="'+_CTX+'/article?type=business&id='+list[i].id+'" title="'+list[i].name+'">'+list[i].name+'</a>'
 						+'    </div>'
 						+'    <span class="date">('+list[i].create_date+')</span>'
 						+'</div>'

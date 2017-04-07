@@ -7,7 +7,7 @@
     <!-- 加载公共的文件 -->
     <%@include file="public.jsp" %>
     
-    <script src="${ctx}/resource/js/front/article.js"></script>
+    <script src="<%=ctx%>/resource/js/front/article.js"></script>
     
 </head>
 <body>
@@ -41,7 +41,7 @@
 				</div>
 				<div class="articleRight" id="articleDetail">
 				 	<!--<div class="articleRightTitle">
-				 		公司传达贯彻市第十三次党代会
+				 		公司传达贯彻 市第十三次党代会
 				 	</div>
 					<div class="hr"></div>
 					<div class="articleRightFrom">

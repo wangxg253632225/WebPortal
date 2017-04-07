@@ -2,18 +2,24 @@ $(function(){ //页面加载完毕才执行
 
 	//图片路径/链接(数组形式):
 	var activitys = [
-		{imageUrl:_CTX+"/resource/img/actity01.jpg",title:"actity01"},
-		{imageUrl:_CTX+"/resource/img/actity02.jpg",title:"actity02"},
-		{imageUrl:_CTX+"/resource/img/actity03.jpg",title:"actity03"},
-		{imageUrl:_CTX+"/resource/img/actity04.jpg",title:"actity04"},
-		{imageUrl:_CTX+"/resource/img/actity05.jpg",title:"actity05"},
-		{imageUrl:_CTX+"/resource/img/actity06.jpg",title:"actity06"},
-		{imageUrl:_CTX+"/resource/img/actity07.jpg",title:"actity07"},
-		{imageUrl:_CTX+"/resource/img/actity08.jpg",title:"actity08"},
-		{imageUrl:_CTX+"/resource/img/actity09.jpg",title:"actity09"},
-		{imageUrl:_CTX+"/resource/img/actity10.jpg",title:"actity10"},
-		{imageUrl:_CTX+"/resource/img/actity11.jpg",title:"actity11"},
-		{imageUrl:_CTX+"/resource/img/actity12.jpg",title:"actity12"},
+		{imageUrl:_CTX+"/resource/img/actity001.jpg",title:"actity01"},
+		{imageUrl:_CTX+"/resource/img/actity002.jpg",title:"actity02"},
+		{imageUrl:_CTX+"/resource/img/actity003.jpg",title:"actity03"},
+		{imageUrl:_CTX+"/resource/img/actity004.jpg",title:"actity04"},
+		{imageUrl:_CTX+"/resource/img/actity005.jpg",title:"actity05"},
+		{imageUrl:_CTX+"/resource/img/actity006.jpg",title:"actity06"},
+		{imageUrl:_CTX+"/resource/img/actity007.jpg",title:"actity07"},
+		{imageUrl:_CTX+"/resource/img/actity008.jpg",title:"actity08"},
+		{imageUrl:_CTX+"/resource/img/actity009.jpg",title:"actity09"},
+		{imageUrl:_CTX+"/resource/img/actity010.jpg",title:"actity10"},
+		{imageUrl:_CTX+"/resource/img/actity011.jpg",title:"actity11"},
+		{imageUrl:_CTX+"/resource/img/actity012.jpg",title:"actity12"},
+		{imageUrl:_CTX+"/resource/img/actity013.jpg",title:"actity13"},
+		{imageUrl:_CTX+"/resource/img/actity014.jpg",title:"actity14"},
+		{imageUrl:_CTX+"/resource/img/actity015.jpg",title:"actity15"},
+		{imageUrl:_CTX+"/resource/img/actity016.jpg",title:"actity16"},
+		{imageUrl:_CTX+"/resource/img/actity017.jpg",title:"actity17"},
+		{imageUrl:_CTX+"/resource/img/actity018.jpg",title:"actity18"}
 	];
 	var images_count = activitys.length;
 	//console.log(images_count);

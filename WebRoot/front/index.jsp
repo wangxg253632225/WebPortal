@@ -14,8 +14,8 @@
     <!-- 加载公共的文件 -->
     <%@include file="public.jsp" %>
     
-    <script src="${ctx}/resource/js/front/index.js"></script>
-    <script src="${ctx}/resource/js/front/activity.js"></script>
+    <script src="<%=ctx%>/resource/js/front/index.js"></script>
+    <script src="<%=ctx%>/resource/js/front/activity.js"></script>
 </head>
 <body>
 <div class="main">
@@ -29,8 +29,8 @@
             <div class="news">
                 <div class="title">
                     <span>新闻中心</span>
-                    <a href="/category?type=news">
-                        <img src="../resource/img/more.gif"/>
+                    <a href="<%=ctx%>/category?type=news">
+                        <img src="<%=ctx%>/resource/img/more.gif"/>
                     </a>
                 </div>
                 <div class="list" id="newsList"></div>
@@ -49,8 +49,8 @@
             <div class="notice">
                 <div class="title">
                     <span>公司业务</span>
-                    <a href="/category?type=business">
-                        <img src="${ctx}/resource/img/more.gif"/>
+                    <a href="<%=ctx%>/category?type=business">
+                        <img src="<%=ctx%>/resource/img/more.gif"/>
                     </a>
                 </div>
                 <div class="list" id="businessList">
@@ -69,29 +69,29 @@
                 <div class="title">
                     <span>联系我们</span>
                     <a href="#">
-                        <img src="${ctx}/resource/img/more.gif"/>
+                        <img src="<%=ctx%>/resource/img/more.gif"/>
                     </a>
                 </div>
                 <div class="list">
                     <div class="contact_cnt">
                         <div class="c_left">公司名称：</div>
-                        <div class="c_right">万宁兴隆有限公司</div>
+                        <div class="c_right">万宁兴隆发展有限公司</div>
                     </div>
                     <div class="contact_cnt">
                         <div class="c_left">联系电话：</div>
-                        <div class="c_right">13800138000</div>
+                        <div class="c_right">13337602940</div>
                     </div>
                     <div class="contact_cnt">
                         <div class="c_left">Email：</div>
-                        <div class="c_right">45645121@qq.com</div>
+                        <div class="c_right">116560485@qq.com</div>
                     </div>
-                    <div class="contact_cnt">
-                        <div class="c_left">公司传真：</div>
-                        <div class="c_right">66669999</div>
-                    </div>
+                    <%--<div class="contact_cnt">--%>
+                        <%--<div class="c_left">公司传真：</div>--%>
+                        <%--<div class="c_right">66669999</div>--%>
+                    <%--</div>--%>
                     <div class="contact_cnt">
                         <div class="c_left">公司地址：</div>
-                        <div class="c_right">海南省万宁市兴隆区金日路旅游服务中心</div>
+                        <div class="c_right">海南省万宁市兴隆旅游区金日路旅游服务中心办公大楼3层</div>
                     </div>
                 </div>
             </div>
@@ -103,27 +103,27 @@
                 <div class="list">
                     <div id="moveGeneralJob" style="width: 1336px;height: 210px;position: relative;">
                         <div class="gerenal_cnt">
-                            <img src="${ctx}/resource/img/general.gif"/>
+                            <img src="<%=ctx%>/resource/img/general.gif"/>
                             <div class="cnt_detail">
                                 <div class="matter">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;海口市城市建设投资有限公司成立于2003年6月11日，现为国有控股公司。
-                                    公司主要职能为融资、政府投资项目建设管理、房地产开发等。公司目前设置办公室、财务部、纪检督察室、审计部、投资部、公用事业部、法律事务室等7个部室；
-                                    下设海口投源实业开发有限公司、海南德润科教投资有限公司、海口德悦实业开发有限公司、
-                                    海口辉邦项目管理有限公司、海口成邦项目管理咨询有限公司、海南寰城地产开发有限公司以及海口凯域资产管理有限公司等7家子公司。
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;万宁兴隆发展有限公司成立于2013年9月6日,是由万宁市政府设立的国有独资公司。
+                                    注册资本为4425万元。主要负责对基础设施项目规划、投资、建设及配套设施开发、经营与管理；土地整理开发；城市资源规划、开发；
+                                    旅游酒店、景区（点）投资建设与经营；物业管理；房地产开发等。公司经营宗旨：坚持“政府主导、企业实施、市场运作”的原则，
+                                    认真践行“城市运营商”职能，着力发挥投资建设平台、融资平台、经营平台和招商平台“四大平台”作用。
+
                                 </div>
-                                <div class="look_detail"><a href="#">查看详情</a></div>
+                                <div class="look_detail"><a href="<%=ctx%>/general">查看详情</a></div>
                             </div>
                         </div>
                         <div class="job_cnt">
-                            <img src="${ctx}/resource/img/job.gif"/>
+                            <img src="<%=ctx%>/resource/img/job.gif"/>
                             <div class="cnt_detail">
                                 <div class="matter">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;海口市城市建设投资有限公司成立于2003年6月11日，现为国有控股公司。公司主要职能为融资、政府投资项目建设管理、房地产开发等。
-                                    公司目前设置办公室、财务部、纪检督察室、审计部、投资部、公用事业部、法律事务室等7个部室；下设海口投源实业开发有限公司、海南德润科教投资有限公司、
-                                    海口德悦实业开发有限公司、海口辉邦项目管理有限公司、海口成邦项目管理咨询有限公司、海南寰城地产开发有限公司以及海口凯域资产管理有限公司等7家子公司。
-                                    公司现有员工271人，研究生学历的7人，大学本科学历的170人。其中高级职称32人；中级职称66人；初级职称34人。拥有其他技术资格55人。
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;万宁兴隆发展有限公司成立于2013年9月6日,是由万宁市政府设立的国有独资公司。
+                                    主要负责对基础设施项目规划、投资、建设及配套设施开发、经营与管理；土地整理开发；城市资源规划、开发；旅游酒店、景区（点）投资建设与经营；物业管理；房地产开发等。
+                                    公司目前设置四部一室，即综合办公室、项目管理部、合作投资部、融资财务部、资产运营部。
                                 </div>
-                                <div class="look_detail"><a href="#">查看详情</a></div>
+                                <div class="look_detail"><a href="<%=ctx%>/manpower">查看详情</a></div>
                             </div>
                         </div>
                     </div>

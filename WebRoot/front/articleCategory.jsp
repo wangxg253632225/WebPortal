@@ -7,7 +7,7 @@
     <!-- 加载公共的文件 -->
     <%@include file="public.jsp" %>
 
-	<script src="${ctx}/resource/js/front/articleCate.js"></script>
+	<script src="<%=ctx%>/resource/js/front/articleCate.js"></script>
     
 </head>
 <body>
@@ -15,7 +15,7 @@
     <!-- 头部开始 -->
     <%@include file="header.jsp" %>
     <!-- 头部结束 -->
-    <!-- 文章分类正文开始 -->
+    <!-- 文章分类 正文开始 -->
 	<div class="container">
 		<div class="articleTab">
 			<a href="#">首页</a>

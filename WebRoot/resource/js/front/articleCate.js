@@ -27,7 +27,7 @@ function getArticleList(){
     $.ajax({
         type: "POST",
         // url: "/article/findList?pageNum="+params.pageNum+"&pageSize="+params.pageSize+"&type="+params.type+"&cate_id="+params.cate_id,
-        url: "/article/findList",
+        url: _CTX+"/article/findList",
         data:JSON.stringify(params),
         async: true,
         success:function(response){
@@ -40,7 +40,7 @@ function getArticleList(){
                     for(var i=0,length = response.data.list.length;i<length;i++){
                         var article = response.data.list[i];
                         strHtml += '<div class="line">'
-                            +'    <a href="/article?type='+article.cate_flag+'&id='+article.id+'">'+article.name+'</a>'
+                            +'    <a href="'+_CTX+'/article?type='+article.cate_flag+'&id='+article.id+'">'+article.name+'</a>'
                             +'    <span>['+article.create_date+']</span>'
                             +'</div>';
                     }
@@ -125,7 +125,7 @@ function getArticleList(){
 function getArticleCates(){
     $.ajax({
         type: "POST",
-        url: "/articleCategory/findList",
+        url: _CTX+"/articleCategory/findList",
         data: {"type":(params.type?params.type.toString():null)},
         dataType:"json",
         async: true,
@@ -134,7 +134,7 @@ function getArticleCates(){
                 var strHtml = "";
                 if(response.data){
                     for(var i = 0,length=response.data.length;i<length;i++){
-                        strHtml += '<li><a href="/category?type='+response.data[i].cate_flag+'&id='+response.data[i].id+'">'+response.data[i].cate_name+'</a></li>';
+                        strHtml += '<li><a href="'+_CTX+'/category?type='+response.data[i].cate_flag+'&id='+response.data[i].id+'">'+response.data[i].cate_name+'</a></li>';
                     }
                 }
                 document.getElementById('articleCategorys').innerHTML = strHtml;

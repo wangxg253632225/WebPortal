@@ -14,7 +14,7 @@ html,body{
 	background: -moz-linear-gradient(#78502d, #534141);
 	background: linear-gradient(#78502d, #534141);*/
 	/*background-image: url(../img/bg.png);*/
-    background-image: url(../img/bg_1.jpg);
+    background-image: url(../img/bg.jpg);
 	background-repeat: repeat;
 	background-attachment: fixed
 }
@@ -466,7 +466,7 @@ html,body{
 /** footer开始  */
 .footer{
 	width: 960px;
-	height: 100%;
+	/*height: 100%;*/
 	margin: 10px 0px 0px 20px;
 	text-align: center;
 }

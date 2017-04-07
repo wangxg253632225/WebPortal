@@ -11,10 +11,10 @@
 <div class="main">
     <!-- 头部开始 -->
     <%@include file="header.jsp" %>
-    <!-- 头部结束 -->
+    <!-- 头部结束 --> 
 		<!-- 公司简介开始 -->
     <div class="container">
-        <img src="${ctx}/resource/img/manpower.png" />
+        <img src="<%=ctx%>/resource/img/manpower.png" />
         <div class="s_general">
             <div class="s_general_cnt">
                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;万宁兴隆发展有限公司成立于2013年9月6日,是由万宁市政府设立的国有独资公司。注册资本为4425万元。主要负责对基础设施项目规划、投资、建设及配套设施开发、经营与管理；土地整理开发；城市资源规划、开发；旅游酒店、景区（点）投资建设与经营；物业管理；房地产开发等。公司经营宗旨：坚持“政府主导、企业实施、市场运作”的原则，认真践行“城市运营商”职能，着力发挥投资建设平台、融资平台、经营平台和招商平台“四大平台”作用。
