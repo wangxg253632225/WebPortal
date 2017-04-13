@@ -32,6 +32,7 @@ public class WebConfig extends JFinalConfig {
         me.add("/articleCategory", ArticleCategoryController.class);
         me.add("/article", ArticleController.class);
         me.add("/link",FriendLinkController.class);
+        me.add("/contact",UserController.class);
         me.add("/",FrontController.class,"/front");
 //        me.add("/blog", BlogController.class);			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
 //        me.add("/user", UserController.class,"/login");  //用户操作controller
@@ -64,7 +65,7 @@ public class WebConfig extends JFinalConfig {
      */
     public void configInterceptor(Interceptors me) {
         me.add(new ExceptionInterceptor());
-//        me.add(new SessionInterceptor());
+        me.add(new SessionInterceptor());
     }
 
     /**

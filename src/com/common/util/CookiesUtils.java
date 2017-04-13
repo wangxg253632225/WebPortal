@@ -91,8 +91,7 @@ public class CookiesUtils {
      * 设置浏览历史字符串
      *
      * @param ids
-     * @param sbookid
-     *            最新浏览的id号
+     * @param
      * @return 修改后的字符串
      */
     private static String setValue(String ids, String bookid, int count) {
@@ -175,7 +174,9 @@ public class CookiesUtils {
                                   int time) {
         Cookie cookie = new Cookie(cookieName, value);
         cookie.setMaxAge(time);// 设置Cookie的存活时间
-        cookie.setPath(request.getServletContext().getContextPath());
+//        cookie.setPath(request.getServletPath());
+        cookie.setPath(request.getContextPath());
+//        cookie.setPath(request.getServletContext().getContextPath());
         response.addCookie(cookie);// 保存cookie
     }
 }
