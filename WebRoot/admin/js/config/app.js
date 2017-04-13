@@ -129,8 +129,9 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 					}
 				}).
 			otherwise({
-				redirectTo: '/login' //angular就喜欢斜杠开头
-			});
+				redirectTo: '/index' //angular就喜欢斜杠开头
+			})
+			;
 		}
 	]).run(function($rootScope, $location, $http) {
 		
@@ -140,15 +141,15 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 		};
 		
 		// 登录判断开始
-		var time = (new Date().getTime() / 1000).toFixed(0);
-		console.log(sessionStorage.User);
+//		var time = (new Date().getTime() / 1000).toFixed(0);
+//		console.log(sessionStorage.User);
 //		console.log(JSON.parse(sessionStorage.User));
-		if((time - sessionStorage.LoginTime) > 600) {
-			$rootScope.go('/login');
-		}
-		if(!sessionStorage.User || sessionStorage.User.data == '') {
-			$rootScope.go('/login');
-		}
+//		if((time - sessionStorage.LoginTime) > 600) {
+//			$rootScope.go('/login');
+//		}
+//		if(!sessionStorage.User || sessionStorage.User.data == '') {
+//			$rootScope.go('/login');
+//		}
 		
 	}).directive('header', function() {
 		return {

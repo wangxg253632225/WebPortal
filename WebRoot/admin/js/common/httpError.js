@@ -21,9 +21,9 @@ define(['angular','js/common/httpErrorDialog.js'], function(angular) {
 				httpremoveloading();
 				//console.log('response');
 				// 根据错误代码决定下一步的操作开始
-				if (res && res.data.code == '0401') {
-					$location.path('/login');
-				}
+//				if (res && res.data.code == '0401') {
+//					$location.path('/login');
+//				}
 				// 根据错误代码决定下一步的操作结束
 				return res;
 			},
