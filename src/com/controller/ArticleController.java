@@ -6,23 +6,26 @@ import com.common.util.JsonMapUtils;
 import com.interceptor.SessionInterceptor;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
+import com.jfinal.log.Log;
 import com.model.ArticleDao;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by lizy_java on 2016/11/29.
  */
 public class ArticleController extends Controller {
 
+    private static Log logger = Log.getLog(ArticleController.class);
+
     public void add(){
         Map<String,Object> map =  new HashMap<String,Object>();
         try{
             map = JsonMapUtils.getRequestObject(this.getRequest());
             String longText = DesEncryptionUtils.toHexString(DesEncryptionUtils.encrypt((String)map.get("content")));
+            logger.debug("传入的数据是什么："+longText);
             map.put("content",longText);
 
         }catch (Exception e){

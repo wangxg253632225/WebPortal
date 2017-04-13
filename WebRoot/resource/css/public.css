@@ -14,7 +14,7 @@ html,body{
 	background: -moz-linear-gradient(#78502d, #534141);
 	background: linear-gradient(#78502d, #534141);*/
 	/*background-image: url(../img/bg.png);*/
-    background-image: url(../img/bg.jpg);
+	background-image: url(../img/bg.jpg);
 	background-repeat: repeat;
 	background-attachment: fixed
 }
@@ -29,14 +29,14 @@ html,body{
 /** 清除浮动能够撑开父div的大小，给父div加clearfix这个class */
 .clearfix:before,
 .clearfix:after {
-    content: " "; 
-    display: table; 
+	content: " ";
+	display: table;
 }
 .clearfix:after {
-    clear: both;
+	clear: both;
 }
 .clearfix {
-    *zoom: 1;
+	*zoom: 1;
 }
 /** 清除浮动能够撑开父div的大小，给父div加clearfix这个class 结束 */
 .main{
@@ -152,9 +152,9 @@ html,body{
 }
 .news .list .line div{
 	width: 188px;
-	overflow:hidden; 
-	text-overflow:ellipsis; 
-	white-space:nowrap; 
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 	word-break:keep-all;
 	text-decoration: none;
 	float: left;
@@ -170,7 +170,7 @@ html,body{
 .news .list .line span.date{
 	float: right;
 	width: 42px;
-    padding-right: 8px;
+	padding-right: 8px;
 	color: #c0cbdb;
 }
 /** 首页新闻结束 */
@@ -204,13 +204,13 @@ html,body{
 	background:  no-repeat center center;
 }
 /*.banner ul li:nth-child(1){*/
-	/*background: url('./1.jpg') no-repeat center center;*/
+/*background: url('./1.jpg') no-repeat center center;*/
 /*}*/
 /*.banner ul li:nth-child(2){*/
-	/*background: url('./2.jpg') no-repeat center center;*/
+/*background: url('./2.jpg') no-repeat center center;*/
 /*}*/
 /*.banner ul li:nth-child(3){*/
-	/*background: url('./3.jpg') no-repeat center center;*/
+/*background: url('./3.jpg') no-repeat center center;*/
 /*}*/
 .banner ol{
 	/*width: 60px;*/
@@ -312,9 +312,9 @@ html,body{
 }
 .notice .list .line div{
 	width: 188px;
-	overflow:hidden; 
-	text-overflow:ellipsis; 
-	white-space:nowrap; 
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 	word-break:keep-all;
 	text-decoration: none;
 	float: left;
@@ -330,7 +330,7 @@ html,body{
 .notice .list .line span.date{
 	float: right;
 	width: 42px;
-    padding-right: 8px;
+	padding-right: 8px;
 	color: #c0cbdb;
 }
 /** 首页公告结束 */
@@ -400,16 +400,16 @@ html,body{
 	line-height: 26px;
 }
 
- .look_detail{
-	 width: 480px;
-	 height:28px;
-	 line-height: 28px;
-	 text-align: right;
+.look_detail{
+	width: 480px;
+	height:28px;
+	line-height: 28px;
+	text-align: right;
 }
 .look_detail a{
-	 color: #336699;
-	 text-decoration: none;
- }
+	color: #336699;
+	text-decoration: none;
+}
 .look_detail a:hover{
 	text-decoration: underline;
 }
@@ -449,7 +449,7 @@ html,body{
 }
 .contact .list .contact_cnt{
 	width:100%;
-	line-height: 30px;
+	line-height: 26px;
 }
 .contact .list .contact_cnt .c_left{
 	width:76px;
@@ -501,8 +501,8 @@ html,body{
 	padding-left: 20px;
 	background: url(../img/icon.png) no-repeat left -34px;
 	padding: 5px 0px 5px 20px;
-    border-bottom: 1px solid #c3d4e7;
-    margin:10px 0px;
+	border-bottom: 1px solid #c3d4e7;
+	margin:10px 0px;
 }
 .articleTab a{
 	color: #004499;
@@ -512,7 +512,7 @@ html,body{
 	text-decoration: underline;
 }
 .articleContent{
-	
+
 }
 .articleContent .articleLeft{
 	width: 218px;
@@ -594,12 +594,12 @@ html,body{
 }
 
 .articleContent .articleRight .line{
-    height: 24px;
-    line-height: 24px;
-    background-image: url(../img/pic1.jpg);
-    background-repeat: no-repeat;
-    background-position: 8px 50%;
-    padding-left: 25px;
+	height: 24px;
+	line-height: 24px;
+	background-image: url(../img/pic1.jpg);
+	background-repeat: no-repeat;
+	background-position: 8px 50%;
+	padding-left: 25px;
 }
 
 .articleContent .articleRight .line a{
@@ -608,20 +608,20 @@ html,body{
 	display: inline;
 	width: 563px;
 	float: left;
-	overflow:hidden; 
-	text-overflow:ellipsis; 
-	white-space:nowrap; 
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 	word-break:keep-all;
 }
 .articleContent .articleRight .line a:hover{
 	text-decoration: underline;
-	
+
 }
 .articleContent .articleRight .line span{
 	color: #c0cbdb;
 	display: inline;
 	width: 100px;
-	float: right;	
+	float: right;
 	text-align: right;
 }
 /** 文章结束 */
@@ -658,7 +658,7 @@ html,body{
 	line-height:110px;
 	text-align: center;
 	float:left ;
- }
+}
 .activity_cnt .activity_detail i{
 	font-size:30px;
 	cursor: pointer;
