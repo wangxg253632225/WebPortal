@@ -13,9 +13,9 @@
     <title>万宁发展首页</title>
     <!-- 加载公共的文件 -->
     <%@include file="public.jsp" %>
-    
-    <script src="<%=ctx%>/resource/js/front/index.js"></script>
-    <script src="<%=ctx%>/resource/js/front/activity.js"></script>
+
+    <script src="${ctx}/resource/js/front/index.js"></script>
+    <script src="${ctx}/resource/js/front/activity.js"></script>
 </head>
 <body>
 <div class="main">
@@ -55,10 +55,10 @@
                 </div>
                 <div class="list" id="businessList">
                     <%--<div class="line">--%>
-                        <%--<div>--%>
-                            <%--<a href="#" title="扶贫用实招 爱心解难题——城投公司工会组织员工为帮扶村的困难户捐款">扶贫用实招 爱心解难题——城投公司工会组织员工为帮扶村的困难户捐款 </a>--%>
-                        <%--</div>--%>
-                        <%--<span class="date">(11-25)</span>--%>
+                    <%--<div>--%>
+                    <%--<a href="#" title="扶贫用实招 爱心解难题——城投公司工会组织员工为帮扶村的困难户捐款">扶贫用实招 爱心解难题——城投公司工会组织员工为帮扶村的困难户捐款 </a>--%>
+                    <%--</div>--%>
+                    <%--<span class="date">(11-25)</span>--%>
                     <%--</div>--%>
                 </div>
             </div>
@@ -82,13 +82,17 @@
                         <div class="c_right">13337602940</div>
                     </div>
                     <div class="contact_cnt">
+                        <div class="c_left">固定电话：</div>
+                        <div class="c_right">0898-62480809</div>
+                    </div>
+                    <div class="contact_cnt">
+                        <div class="c_left">联系人：</div>
+                        <div class="c_right">陈先生</div>
+                    </div>
+                    <div class="contact_cnt">
                         <div class="c_left">Email：</div>
                         <div class="c_right">116560485@qq.com</div>
                     </div>
-                    <%--<div class="contact_cnt">--%>
-                        <%--<div class="c_left">公司传真：</div>--%>
-                        <%--<div class="c_right">66669999</div>--%>
-                    <%--</div>--%>
                     <div class="contact_cnt">
                         <div class="c_left">公司地址：</div>
                         <div class="c_right">海南省万宁市兴隆旅游区金日路旅游服务中心办公大楼3层</div>
@@ -143,14 +147,14 @@
                     <div id="text" style="float: left;position: relative;width: 800px; height: 149px;overflow: hidden;">
                         <ul id="acticityBanner">
                             <%--<li class="first">--%>
-                                <%--<a>--%>
-                                    <%--<img src="../resource/img/actity01.jpg"/>--%>
-                                <%--</a>--%>
-                                <%--<h4>--%>
-                                    <%--<a href="#">--%>
-                                        <%--活力体育场--%>
-                                    <%--</a>--%>
-                                <%--</h4>--%>
+                            <%--<a>--%>
+                            <%--<img src="../resource/img/actity01.jpg"/>--%>
+                            <%--</a>--%>
+                            <%--<h4>--%>
+                            <%--<a href="#">--%>
+                            <%--活力体育场--%>
+                            <%--</a>--%>
+                            <%--</h4>--%>
                             <%--</li>--%>
                         </ul>
                     </div>
