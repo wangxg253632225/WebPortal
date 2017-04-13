@@ -81,6 +81,7 @@ public class ArticleController extends Controller {
         Map<String,Object> map =  new HashMap<String,Object>();
         try{
             map = JsonMapUtils.getRequestObject(this.getRequest());
+            logger.info("传入的数据是什么："+ map.get("content"));
             String longText = DesEncryptionUtils.toHexString(DesEncryptionUtils.encrypt((String)map.get("content")));
             System.out.print(longText);
             logger.info("传入的数据是什么："+longText);
