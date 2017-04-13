@@ -20,6 +20,7 @@ public class WebConfig extends JFinalConfig {
      */
     public void configConstant(Constants me) {
         // 加载少量必要配置，随后可用PropKit.get(...)获取值
+        me.setEncoding("UTF_8");
         PropKit.use("a_little_config.txt");
         me.setDevMode(PropKit.getBoolean("devMode", false));
     }
