@@ -25,7 +25,6 @@ public class ArticleController extends Controller {
         try{
             map = JsonMapUtils.getRequestObject(this.getRequest());
             String longText = DesEncryptionUtils.toHexString(DesEncryptionUtils.encrypt((String)map.get("content")));
-            logger.debug("传入的数据是什么："+longText);
             map.put("content",longText);
 
         }catch (Exception e){
@@ -83,6 +82,8 @@ public class ArticleController extends Controller {
         try{
             map = JsonMapUtils.getRequestObject(this.getRequest());
             String longText = DesEncryptionUtils.toHexString(DesEncryptionUtils.encrypt((String)map.get("content")));
+            System.out.print(longText);
+            logger.info("传入的数据是什么："+longText);
             map.put("content",longText);
 
         }catch (Exception e){
