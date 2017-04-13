@@ -2,15 +2,12 @@ define(['angular'], function(angular) {
 	var adminList = angular.module('adminList', []);
 	
 	adminList.run(function($http){
-        $http.defaults.headers.common["sessionToken"] = sessionStorage.User.data;
+//      $http.defaults.headers.common["sessionToken"] = sessionStorage.User.data;
         $http.defaults.headers.common["Content-Type"] = "application/json";
     });
 	
 	adminList.controller('adminListCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter,$mdDialog) {
 
-		console.log(sessionStorage);
-		console.log(sessionStorage.User);
-		console.log(JSON.parse(sessionStorage.User).data);
 		$scope.pageSizes = [2, 5, 10, 20];
 		//变量  
 		$scope.pageNum = 1;
@@ -28,8 +25,7 @@ define(['angular'], function(angular) {
 					url: adminUrl + "user/getList",
 					data: {
 						"pageNum": $scope.pageNum,
-						"pageSize": $scope.pageSize,
-						"sessionToken":JSON.parse(sessionStorage.User).data
+						"pageSize": $scope.pageSize
 					}
 				})
 				.success(function(response) {
