@@ -1,0 +1,226 @@
+<div ng-controller="contactEditCtrl">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="page-header">
+				<h1>
+					联系我们
+					<small>
+						<i class="icon-double-angle-right"></i>
+						修改
+					</small>
+				</h1>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					公司名称
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.companyName"/>
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline"></div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					&nbsp;&nbsp;&nbsp;联系人
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.linkMan" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					联系电话
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.mobilePhone"/>
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					固定电话
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.landlineTelephone" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					工作时间
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.businessTime" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					详细地址
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.address" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					&nbsp;&nbsp;&nbsp;&nbsp;邮&nbsp;&nbsp;箱
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.email" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					&nbsp;&nbsp;&nbsp;&nbsp;邮&nbsp;&nbsp;编
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.zipCode" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					&nbsp;&nbsp;&nbsp;&nbsp;传&nbsp;&nbsp;真
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.fax" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					&nbsp;&nbsp;&nbsp;&nbsp;经&nbsp;&nbsp;度
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.addressLat" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					&nbsp;&nbsp;&nbsp;&nbsp;纬&nbsp;&nbsp;度
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.addressLng" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					&nbsp;&nbsp;&nbsp;&nbsp;备&nbsp;&nbsp;注
+				</label>
+				<div class="col-xs-12 col-sm-3">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="icon-lock"></i>
+						</span>
+						<input type="text" class="width-100" ng-model="data.remark" />
+					</div>
+				</div>
+				<div class="help-block col-xs-12 col-sm-reset inline">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="inputSuccess" class="col-xs-0 control-label no-padding-right wn_label">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</label>
+				<div class="col-xs-12 col-sm-5">
+					<div class="btn-group pull-left">
+						<button class="btn btn-sm btn-purple" ng-click="updateAdmin();">
+							<i class="icon-save bigger-125"></i>
+							保存
+						</button>
+					</div>
+					<div class="btn-group pull-left" style="margin-left:12px;">
+						<button class="btn btn-sm btn-info">
+							<i class="icon-remove bigger-125"></i>
+							取消
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
