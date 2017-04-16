@@ -150,6 +150,17 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 						}
 					}
 				}).
+			when('/contact/index', {
+					resolve: {
+						keyName: function($q) {
+							var deferred = $q.defer();
+							require(['js/templates/contact/index'], function(controller) {
+								deferred.resolve();
+							});
+							return deferred.promise;
+						}
+					}
+				}).
 			otherwise({
 				redirectTo: '/index' //angular就喜欢斜杠开头
 			})
