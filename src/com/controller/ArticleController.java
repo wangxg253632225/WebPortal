@@ -68,7 +68,7 @@ public class ArticleController extends Controller {
         ArticleDao resulrDao = ArticleDao.articleDao.getDetail(id);
         try{
             logger.info("解码前内容:"+resulrDao.getStr("content"));
-            String content = DesEncryptionUtils.decrypt(new String(resulrDao.getStr("content").getBytes("iso8859-1"),"utf-8"));
+            String content = DesEncryptionUtils.decrypt(resulrDao.getStr("content"));
             resulrDao.put("content",content);
             logger.info("解码后内容:"+content);
 
@@ -203,7 +203,7 @@ public class ArticleController extends Controller {
         Map<String,Object> resultDate = ArticleDao.articleDao.detail(id);
         ArticleDao current = (ArticleDao)resultDate.get("current");
         try{
-            String content = DesEncryptionUtils.decrypt(new String(current.getStr("content").getBytes("iso8859-1"),"utf-8"));
+            String content = DesEncryptionUtils.decrypt(current.getStr("content"));
             current.put("content",content);
         }catch (Exception e){
             renderJson(new JsonResult("解析文章内容出错", null, "1", null, null));

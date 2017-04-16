@@ -3,7 +3,7 @@ $(function(){
 	function getFriendLink(){
 		$.ajax({
 		 	type: "POST",
-		 	url: "/link/list",
+		 	url: _CTX+"/link/list",
 			data: {},
 			dataType:"json",
 			async: true,

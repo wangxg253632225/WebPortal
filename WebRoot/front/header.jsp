@@ -4,7 +4,7 @@
     <div class="nav">
         <ul>
             <li>
-                <a href="/<%=ctx%>">
+                <a href="<%=ctx%>">
                     <div class="left">
                         <span class="first">首页</span>
                         <span class="last">Home</span>
