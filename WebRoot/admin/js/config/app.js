@@ -128,6 +128,28 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 						}
 					}
 				}).
+			when('/project/index', {
+					resolve: {
+						keyName: function($q) {
+							var deferred = $q.defer();
+							require(['js/templates/project/index'], function(controller) {
+								deferred.resolve();
+							});
+							return deferred.promise;
+						}
+					}
+				}).
+			when('/general/index', {
+					resolve: {
+						keyName: function($q) {
+							var deferred = $q.defer();
+							require(['js/templates/general/index'], function(controller) {
+								deferred.resolve();
+							});
+							return deferred.promise;
+						}
+					}
+				}).
 			otherwise({
 				redirectTo: '/index' //angular就喜欢斜杠开头
 			})

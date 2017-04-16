@@ -790,3 +790,36 @@ html,body{
 	line-height: 26px;
 }
 /** 公司简介结束 */
+
+/** 公司项目开始 */
+.project_top{
+	width: 950px;
+	height:50px;
+	margin:10px 5px 0px 5px;
+	border-bottom: 4px solid #613246;
+	text-align: right;
+}
+.project_li{
+	width:140px;
+	height:36px;
+	line-height: 36px;
+	text-align: center;
+	margin:0px 0px 0px 20px;
+	display: inline-table;
+	font-weight: bold;
+	color: #613246;
+	cursor: pointer;
+}
+
+.project_general{
+	width: 960px;
+	height:auto;
+	margin-top:20px;
+	background-repeat: no-repeat;
+}
+.project_general .project_general_cnt{
+	width:920px;
+	margin:0px 20px 20px 20px;
+	line-height: 26px;
+}
+/** 公司项目结束 */

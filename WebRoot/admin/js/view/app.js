@@ -14,24 +14,20 @@ define(['angular'], function(angular) {
 			}]
 		},{
 			name: '企业概况',
-			path: '',
+			path: '/general/index',
 			icon: 'icon-desktop',
 			children: [{
 				name: '概况管理',
-				path: '/news/cate_list',
+				path: '/general/list',
 				icon: 'icon-desktop'
 			}]
 		},{
-			name: '公司业务',
-			path: '/business/index',
+			name: '公司项目',
+			path: '/project/index',
 			icon: 'icon-desktop',
 			children: [{
-				name: '业务分类',
-				path: '/business/business_cate_list',
-				icon: 'icon-desktop'
-			},{
-				name: '业务管理',
-				path: '/business/business_list',
+				name: '项目维护',
+				path: '/project/list',
 				icon: 'icon-desktop'
 			}]
 		},{

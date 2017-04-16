@@ -4,7 +4,7 @@
     <div class="nav">
         <ul>
             <li>
-                <a href="<%=ctx%>">
+                <a href="/<%=ctx%>">
                     <div class="left">
                         <span class="first">首页</span>
                         <span class="last">Home</span>
@@ -26,6 +26,15 @@
                     <div class="left">
                         <span class="first">公司业务</span>
                         <span class="last">Financing</span>
+                    </div>
+                </a>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a href="<%=ctx%>/project">
+                    <div class="left">
+                        <span class="first">公司项目</span>
+                        <span class="last">Project</span>
                     </div>
                 </a>
                 <div class="divider"></div>
