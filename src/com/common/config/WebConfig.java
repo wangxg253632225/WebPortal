@@ -35,7 +35,6 @@ public class WebConfig extends JFinalConfig {
         me.add("/article", ArticleController.class);
         me.add("/project", ProjectController.class);
         me.add("/general", GeneralController.class);
-
         me.add("/link",FriendLinkController.class);
         me.add("/contact",ContactController.class);
         me.add("/",FrontController.class,"/front");
