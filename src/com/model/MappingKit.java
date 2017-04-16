@@ -17,6 +17,7 @@ public class MappingKit {
         arp.addMapping("gov_project", "id", ProjectDao.class);//公司项目
         arp.addMapping("gov_general", "id", GeneralDao.class);//公司项目
         arp.addMapping("gov_contact", "id", ContactDao.class);//公司项目
+
     }
 
 }
