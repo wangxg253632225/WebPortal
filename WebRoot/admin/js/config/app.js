@@ -161,6 +161,17 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 						}
 					}
 				}).
+			when('/manpower/index', {
+					resolve: {
+						keyName: function($q) {
+							var deferred = $q.defer();
+							require(['js/templates/manpower/index'], function(controller) {
+								deferred.resolve();
+							});
+							return deferred.promise;
+						}
+					}
+				}).
 			otherwise({
 				redirectTo: '/index' //angular就喜欢斜杠开头
 			})

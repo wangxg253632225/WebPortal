@@ -15,6 +15,12 @@ $(function(){
         $('#moveGeneralJob').stop().animate({top:-220},500)
     });
 
+	//查询联系我们
+	getContact();
+
+	//查询人力资源
+	getManpower();
+
 });
 
 /** 查询新闻中心8条数据 开始 */
@@ -82,3 +88,59 @@ function getBusinessList(){
 	});
 }
 /** 查询公司业务8条数据 结束 */
+
+/** 查询公司8条数据 开始 */
+function getContact(){
+	$.ajax({
+		type: "POST",
+		url: _CTX+"/contact/detail",
+		dataType:"json",
+		async: true,
+		success:function(response){
+			if(response.code == "0"){
+				var strHtml = "";
+
+				strHtml +='<div class="contact_cnt">'
+							+' <div class="c_left">公司名称：</div>'
+					+' <div class="c_right">'+response.data.company_name+'</div>'
+					+' </div>'
+					+' <div class="contact_cnt">'
+					+' <div class="c_left">联系电话：</div>'
+					+' <div class="c_right">'+response.data.mobile_phone+'</div>'
+					+' </div>'
+					+' <div class="contact_cnt">'
+					+' <div class="c_left">固定电话：</div>'
+					+' <div class="c_right">'+response.data.landline_telephone+'</div>'
+					+' </div>'
+					+' <div class="contact_cnt">'
+					+' <div class="c_left">联系人：</div>'
+					+' <div class="c_right">'+response.data.link_man+'</div>'
+					+' </div>'
+					+' <div class="contact_cnt">'
+					+' <div class="c_left">Email：</div>'
+					+' <div class="c_right">'+response.data.email+'</div>'
+					+' </div>'
+					+' <div class="contact_cnt">'
+					+' <div class="c_left">公司地址：</div>'
+					+' <div class="c_right">'+response.data.address+'</div>'
+					+' </div>';
+				document.getElementById('contactIndex').innerHTML = strHtml;
+			}
+		}
+	});
+}
+/** 查询公司业务8条数据 结束 */
+
+function getManpower(){
+	$.ajax({
+		type: "POST",
+		url: _CTX+"/manpower/getDetail",
+		dataType:"json",
+		async: true,
+		success:function(response){
+			if(response.code == "0"){
+				document.getElementById("manpowerHtml").innerHTML = " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+response.data.title;
+			}
+		}
+	});
+}

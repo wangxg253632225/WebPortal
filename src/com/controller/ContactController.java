@@ -4,6 +4,8 @@ import com.common.result.JsonResult;
 import com.common.util.JsonMapUtils;
 import com.common.util.StringUtils;
 import com.exception.ServiceException;
+import com.interceptor.SessionInterceptor;
+import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.log.Log;
 import com.model.ContactDao;
@@ -36,13 +38,9 @@ public class ContactController extends Controller {
     /**
      * 查询联系人信息
      */
-    public void getDetail() {
-        long id = getParaToLong("id");
-        if (StringUtils.isEmpty(id)) {
-            throw new ServiceException("查询联系人ID不能为空");
-        }
-        ContactDao contact = ContactDao.contactDao.findById(id);
-        renderJson(new JsonResult("success", null, "0", contact, null));
+    @Clear(SessionInterceptor.class)
+    public void detail() {
+        renderJson(new JsonResult("success", null, "0", ContactDao.contactDao.detail(), null));
     }
 
     /**

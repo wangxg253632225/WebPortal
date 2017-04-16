@@ -45,15 +45,11 @@ define(['angular'], function(angular) {
 			}]
 		},{
 			name: '人力资源',
-			path: '/news/index',
+			path: '/manpower/index',
 			icon: 'icon-desktop',
 			children: [{
-				name: '人力资源分类',
-				path: '/news/cate_list',
-				icon: 'icon-desktop'
-			},{
-				name: '人力资源管理',
-				path: '/news/news_list',
+				name: '信息维护',
+				path: '/manpower/list',
 				icon: 'icon-desktop'
 			}]
 		},{

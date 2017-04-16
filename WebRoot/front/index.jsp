@@ -14,8 +14,8 @@
     <!-- 加载公共的文件 -->
     <%@include file="public.jsp" %>
 
-    <script src="${ctx}/resource/js/front/index.js"></script>
-    <script src="${ctx}/resource/js/front/activity.js"></script>
+    <script src="<%=ctx%>/resource/js/front/index.js"></script>
+    <script src="<%=ctx%>/resource/js/front/activity.js"></script>
 </head>
 <body>
 <div class="main">
@@ -72,32 +72,7 @@
                         <img src="<%=ctx%>/resource/img/more.gif"/>
                     </a>
                 </div>
-                <div class="list">
-                    <div class="contact_cnt">
-                        <div class="c_left">公司名称：</div>
-                        <div class="c_right">万宁兴隆发展有限公司</div>
-                    </div>
-                    <div class="contact_cnt">
-                        <div class="c_left">联系电话：</div>
-                        <div class="c_right">13337602940</div>
-                    </div>
-                    <div class="contact_cnt">
-                        <div class="c_left">固定电话：</div>
-                        <div class="c_right">0898-62480809</div>
-                    </div>
-                    <div class="contact_cnt">
-                        <div class="c_left">联系人：</div>
-                        <div class="c_right">陈先生</div>
-                    </div>
-                    <div class="contact_cnt">
-                        <div class="c_left">Email：</div>
-                        <div class="c_right">116560485@qq.com</div>
-                    </div>
-                    <div class="contact_cnt">
-                        <div class="c_left">公司地址：</div>
-                        <div class="c_right">海南省万宁市兴隆旅游区金日路旅游服务中心办公大楼3层</div>
-                    </div>
-                </div>
+                <div class="list" id="contactIndex"></div>
             </div>
             <div class="general_job">
                 <div class="title" id="general_job_head">
@@ -122,11 +97,7 @@
                         <div class="job_cnt">
                             <img src="<%=ctx%>/resource/img/job.gif"/>
                             <div class="cnt_detail">
-                                <div class="matter">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;万宁兴隆发展有限公司成立于2013年9月6日,是由万宁市政府设立的国有独资公司。
-                                    主要负责对基础设施项目规划、投资、建设及配套设施开发、经营与管理；土地整理开发；城市资源规划、开发；旅游酒店、景区（点）投资建设与经营；物业管理；房地产开发等。
-                                    公司目前设置四部一室，即综合办公室、项目管理部、合作投资部、融资财务部、资产运营部。
-                                </div>
+                                <div class="matter" id="manpowerHtml"></div>
                                 <div class="look_detail"><a href="<%=ctx%>/manpower">查看详情</a></div>
                             </div>
                         </div>

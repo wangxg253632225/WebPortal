@@ -10,6 +10,7 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.model.MappingKit;
+import com.model.bean.Manpower;
 import com.model.bean.Project;
 
 /**
@@ -37,6 +38,7 @@ public class WebConfig extends JFinalConfig {
         me.add("/general", GeneralController.class);
         me.add("/link",FriendLinkController.class);
         me.add("/contact",ContactController.class);
+        me.add("/manpower",ManpowerController.class);
         me.add("/",FrontController.class,"/front");
 //        me.add("/blog", BlogController.class);			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
 //        me.add("/user", UserController.class,"/login");  //用户操作controller

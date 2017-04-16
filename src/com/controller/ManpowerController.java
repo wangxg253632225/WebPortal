@@ -7,7 +7,9 @@ import com.interceptor.SessionInterceptor;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.log.Log;
+import com.model.ManpowerDao;
 import com.model.ProjectDao;
+import com.model.bean.Manpower;
 import com.model.bean.Project;
 
 import java.util.HashMap;
@@ -17,9 +19,9 @@ import java.util.Map;
 /**
  * Created by lizy_java on 2017/4/14.
  */
-public class ProjectController extends Controller {
+public class ManpowerController extends Controller {
 
-    private static Log logger = Log.getLog(ProjectController.class);
+    private static Log logger = Log.getLog(ManpowerController.class);
 
     public void add(){
         Map<String,Object> map =  new HashMap<String,Object>();
@@ -33,12 +35,12 @@ public class ProjectController extends Controller {
             return;
         }
 
-        Project project = ProjectDao.projectDao.add(map);
-        renderJson(new JsonResult("success", null, "0", project, null));
+        ManpowerDao manpower = ManpowerDao.manpowerDao.add(map);
+        renderJson(new JsonResult("success", null, "0", manpower, null));
     }
 
     public void list(){
-        renderJson(new JsonResult("success", null, "0", ProjectDao.projectDao.list(), null));
+        renderJson(new JsonResult("success", null, "0", ManpowerDao.manpowerDao.list(), null));
     }
 
     public void detail(){
@@ -47,16 +49,16 @@ public class ProjectController extends Controller {
             renderJson(new JsonResult("请传入ID", null, "1", null, null));
             return;
         }
-        ProjectDao project = ProjectDao.projectDao.detail(id);
+        ManpowerDao manpower = ManpowerDao.manpowerDao.detail(id);
         try{
-            String  content = DesEncryptionUtils.decrypt(new String(project.getStr("content").getBytes("iso8859-1"),"utf-8"));
-            project.put("content",content);
+            String  content = DesEncryptionUtils.decrypt(new String(manpower.getStr("content").getBytes("iso8859-1"),"utf-8"));
+            manpower.put("content",content);
         }catch (Exception e){
             renderJson(new JsonResult("解析文章内容出错", null, "1", null, null));
             return;
         }
 
-        renderJson(new JsonResult("success", null, "0", project, null));
+        renderJson(new JsonResult("success", null, "0", manpower, null));
 
     }
 
@@ -71,50 +73,30 @@ public class ProjectController extends Controller {
             renderJson(new JsonResult("参数的参数有误", null, "1", null, null));
             return;
         }
-
         if( map.get("id") == null){
             renderJson(new JsonResult("请传入ID", null, "1", null, null));
             return;
         }
-
         if( map.get("name") == null){
-            renderJson(new JsonResult("请传入项目名称", null, "1", null, null));
+            renderJson(new JsonResult("请传入名称", null, "1", null, null));
             return;
         }
-
-        Project project = ProjectDao.projectDao.update(map);
-        renderJson(new JsonResult("success", null, "0", project, null));
-    }
-
-    public void delete(){
-        Long id = getParaToLong("id");
-        if(id == null){
-            renderJson(new JsonResult("请选择要删除的数据", null, "1", null, null));
-            return;
-        }
-        boolean isDelete = ProjectDao.projectDao.delete(id);
-        if(isDelete){
-            renderJson(new JsonResult("success", null, "0", null, null));
-        }else{
-            renderJson(new JsonResult("删除数据失败", null, "1", null, null));
-        }
-
+        ManpowerDao manpower = ManpowerDao.manpowerDao.update(map);
+        renderJson(new JsonResult("success", null, "0", manpower, null));
     }
 
     @Clear(SessionInterceptor.class)
-    public void getList(){
-        List<ProjectDao> projectDaos = ProjectDao.projectDao.list();
-        for(ProjectDao project:projectDaos){
-            try{
-                String longText =DesEncryptionUtils.decrypt(new String(project.getStr("content").getBytes("iso8859-1"),"utf-8"));
-                project.set("content",longText);
-
-            }catch (Exception e){
-                renderJson(new JsonResult("参数的参数有误", null, "1", null, null));
-                return;
-            }
+    public void getDetail(){
+        ManpowerDao manpower = ManpowerDao.manpowerDao.list();
+        try{
+            String  content = DesEncryptionUtils.decrypt(new String(manpower.getStr("content").getBytes("iso8859-1"),"utf-8"));
+            manpower.put("content",content);
+        }catch (Exception e){
+            renderJson(new JsonResult("解析文章内容出错", null, "1", null, null));
+            return;
         }
-        renderJson(new JsonResult("success", null, "0", projectDaos, null));
+
+        renderJson(new JsonResult("success", null, "0", manpower, null));
     }
 
 }

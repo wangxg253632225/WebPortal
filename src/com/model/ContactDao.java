@@ -1,9 +1,6 @@
 package com.model;
 
-import com.common.result.JsonResult;
-import com.common.util.DateUtils;
 import com.common.util.StringUtils;
-import com.exception.ServiceException;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IBean;
 import com.jfinal.plugin.activerecord.Page;
@@ -62,6 +59,10 @@ public class ContactDao extends Contact<ContactDao> implements IBean {
         return returnData;
     }
 
+    public ContactDao detail(){
+        String sql = " select * from gov_contact ";
+        return contactDao.findFirst(sql);
+    }
     public int updateContact(Map<String,Object> map) {
         String id = map.get("id").toString();
         String sql = "update gov_contact set company_name=?,mobile_phone=?,email=?,business_time=?," +

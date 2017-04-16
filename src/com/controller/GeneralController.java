@@ -48,7 +48,7 @@ public class GeneralController extends Controller {
         }
         GeneralDao general = GeneralDao.generalDao.detail(id);
         try{
-            String  content = DesEncryptionUtils.decrypt(general.getStr("content"));
+            String  content = DesEncryptionUtils.decrypt(new String(general.getStr("content").getBytes("iso8859-1"),"utf-8"));
             general.put("content",content);
         }catch (Exception e){
             renderJson(new JsonResult("解析文章内容出错", null, "1", null, null));
@@ -105,7 +105,7 @@ public class GeneralController extends Controller {
         List<GeneralDao> generalDaos = GeneralDao.generalDao.list();
         for(GeneralDao general:generalDaos){
             try{
-                String longText =DesEncryptionUtils.decrypt(general.getStr("content"));
+                String longText =DesEncryptionUtils.decrypt(new String(general.getStr("content").getBytes("iso8859-1"),"utf-8"));
                 general.set("content",longText);
 
             }catch (Exception e){
