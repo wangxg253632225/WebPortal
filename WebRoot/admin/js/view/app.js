@@ -18,7 +18,7 @@ define(['angular'], function(angular) {
 			icon: 'icon-desktop',
 			children: [{
 				name: '概况管理',
-				path: '/news/cate_list',
+				path: '/news/ ',
 				icon: 'icon-desktop'
 			}]
 		},{
@@ -62,11 +62,11 @@ define(['angular'], function(angular) {
 			}]
 		},{
 			name: '联系我们',
-			path: '/news/index',
+			path: '/contact/index',
 			icon: 'icon-desktop',
 			children: [{
 				name: '信息维护',
-				path: '/news/cate_list',
+				path: '/contact/list',
 				icon: 'icon-desktop'
 			}]
 		},{

@@ -67,8 +67,11 @@ public class ArticleController extends Controller {
         }
         ArticleDao resulrDao = ArticleDao.articleDao.getDetail(id);
         try{
+            logger.info("解码前内容:"+resulrDao.getStr("content"));
             String content = DesEncryptionUtils.decrypt(resulrDao.getStr("content"));
             resulrDao.put("content",content);
+            logger.info("解码后内容:"+content);
+
         }catch (Exception e){
             renderJson(new JsonResult("解析文章内容出错", null, "1", null, null));
             return;

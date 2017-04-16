@@ -14,6 +14,7 @@ public class MappingKit {
         arp.addMapping("gov_article_category","id", ArticleCategoryDao.class); //操作用户dao
         arp.addMapping("gov_article","id", ArticleDao.class); //操作用户dao
         arp.addMapping("gov_friendship_link","id", FriendLinkDao.class); //操作友情链接dao
+        arp.addMapping("gov_contact","id",ContactDao.class);
     }
 
 }
