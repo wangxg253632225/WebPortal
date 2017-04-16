@@ -128,11 +128,22 @@ define(['angular', 'require', 'ngRoute','ngMaterial','cTri'
 						}
 					}
 				}).
-				when('/contact/index', {
+			when('/project/index', {
 					resolve: {
 						keyName: function($q) {
 							var deferred = $q.defer();
-							require(['js/templates/contact/index'], function(controller) {
+							require(['js/templates/project/index'], function(controller) {
+								deferred.resolve();
+							});
+							return deferred.promise;
+						}
+					}
+				}).
+			when('/general/index', {
+					resolve: {
+						keyName: function($q) {
+							var deferred = $q.defer();
+							require(['js/templates/general/index'], function(controller) {
 								deferred.resolve();
 							});
 							return deferred.promise;

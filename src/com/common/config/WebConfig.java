@@ -10,6 +10,7 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.model.MappingKit;
+import com.model.bean.Project;
 
 /**
  * API引导式配置
@@ -32,6 +33,8 @@ public class WebConfig extends JFinalConfig {
         me.add("/user", UserController.class, "/login");    // 第三个参数为该Controller的视图存放路径
         me.add("/articleCategory", ArticleCategoryController.class);
         me.add("/article", ArticleController.class);
+        me.add("/project", ProjectController.class);
+        me.add("/general", GeneralController.class);
         me.add("/link",FriendLinkController.class);
         me.add("/contact",ContactController.class);
         me.add("/",FrontController.class,"/front");
