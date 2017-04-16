@@ -45,4 +45,27 @@ public class ContactController extends Controller {
         renderJson(new JsonResult("success", null, "0", contact, null));
     }
 
+    /**
+     * 更新信息维护
+     */
+    public void updateContact(){
+        Map<String, Object> map = new HashMap<String, Object>();
+        try {
+            map = JsonMapUtils.getRequestObject(this.getRequest());
+        } catch (Exception e) {
+            e.printStackTrace();
+            renderJson(new JsonResult("参入的参数有误", null, "1", null, null));
+        }
+        if (StringUtils.isEmpty(map.get("username"))) {
+            renderJson(new JsonResult("传入用户名为空", null, "1", null, null));
+        }
+
+        int count = ContactDao.contactDao.updateContact(map);
+        if (count > 0) {
+            renderJson(new JsonResult("success", null, "0", null, null));
+        } else {
+            renderJson(new JsonResult("更新失败", null, "1", null, null));
+        }
+    }
+
 }

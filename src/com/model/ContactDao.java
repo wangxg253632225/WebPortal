@@ -1,8 +1,10 @@
 package com.model;
 
 import com.common.result.JsonResult;
+import com.common.util.DateUtils;
 import com.common.util.StringUtils;
 import com.exception.ServiceException;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IBean;
 import com.jfinal.plugin.activerecord.Page;
 import com.model.bean.Contact;
@@ -58,6 +60,65 @@ public class ContactDao extends Contact<ContactDao> implements IBean {
         }
         returnData.put("list",contactDaoList);
         return returnData;
+    }
+
+    public int updateContact(Map<String,Object> map) {
+        String id = map.get("id").toString();
+        String sql = "update gov_contact set company_name=?,mobile_phone=?,email=?,business_time=?," +
+                "fax=?,zip_code=?,address=?, address_lng=?,address_lat=?,content=?,remark=?,landline_telephone=?,link_man=? where id=?";
+        String companyName = "";
+        if(!StringUtils.isEmpty(map.get("companyName"))){
+            companyName = map.get("companyName").toString();
+        }
+        String mobilePhone = "";
+        if(!StringUtils.isEmpty(map.get("mobilePhone"))){
+            mobilePhone = map.get("mobilePhone").toString();
+        }
+        String email = "";
+        if(!StringUtils.isEmpty(map.get("email"))){
+            email = map.get("email").toString();
+        }
+        String businessTime = "";
+        if(!StringUtils.isEmpty(map.get("businessTime"))){
+            businessTime = map.get("businessTime").toString();
+        }
+        String fax = "";
+        if(!StringUtils.isEmpty(map.get("fax"))){
+            fax = map.get("fax").toString();
+        }
+        String zipCode = "";
+        if(!StringUtils.isEmpty(map.get("zipCode"))){
+            zipCode = map.get("zipCode").toString();
+        }
+        String address = "";
+        if(!StringUtils.isEmpty(map.get("address"))){
+            address = map.get("address").toString();
+        }
+        String addressLng = "";
+        if(!StringUtils.isEmpty(map.get("addressLng"))){
+            addressLng = map.get("addressLng").toString();
+        }
+        String addressLat = "";
+        if(!StringUtils.isEmpty(map.get("addressLat"))){
+            addressLat = map.get("addressLat").toString();
+        }
+        String content = "";
+        if(!StringUtils.isEmpty(map.get("content"))){
+            content = map.get("content").toString();
+        }
+        String landlineTelephone = "";
+        if(!StringUtils.isEmpty(map.get("landlineTelephone"))){
+            landlineTelephone = map.get("landlineTelephone").toString();
+        }
+        String linkMan = "";
+        if(!StringUtils.isEmpty(map.get("linkMan"))){
+            linkMan = map.get("linkMan").toString();
+        }
+        String remark = "";
+        if(!StringUtils.isEmpty(map.get("remark"))){
+            remark = map.get("remark").toString();
+        }
+        return  Db.update(sql, companyName, mobilePhone,email,businessTime,fax,zipCode,address,addressLng,addressLat,content,remark,landlineTelephone,linkMan,id);
     }
 
 

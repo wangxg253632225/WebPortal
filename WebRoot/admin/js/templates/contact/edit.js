@@ -1,14 +1,24 @@
 define(['angular'], function(angular) {
-	var adminEdit = angular.module('contactEdit', []);
+	var contactEdit = angular.module('contactEdit', []);
 
-	adminEdit.controller('contactEditCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter, $routeParams,$mdDialog) {
+	contactEdit.controller('contactEditCtrl', function($scope, $rootScope, $http, $timeout, $location, $filter, $routeParams,$mdDialog) {
 
 		$scope.data = {
 			"id":null,
-			"username":null,
-			"password":null,
-			"remark":"",
-			"version":null
+			"companyName":null,
+			"businessTime":null,
+			"mobilePhone":null,
+			"address":null,
+			"addressLat":null,
+			"addressLng":null,
+			"email":null,
+			"fax":null,
+			"landlineTelephone":null,
+			"content":null,
+			"linkMan":null,
+			"zipCode":null,
+			"businessTime":null,
+			"remark":null
 		};
 
 		/** 加载新闻数据开始  */
@@ -50,30 +60,30 @@ define(['angular'], function(angular) {
 
 
 		/*更新用户数据*/
-		$scope.updateAdmin = function() {
+		$scope.updateContact = function() {
 			$http({
 					method: 'POST',
-					url: adminUrl + "user/updateUser",
+					url: adminUrl + "contact/updateContact",
 					data: $scope.data
 				})
 				.success(function(response) {
 					if (response.code == 0) {
 						alert = $mdDialog.alert({
-							title: '用户更新',
-							textContent: '用户更新成功',
+							title: '信息维护更新',
+							textContent: '信息维护更新成功',
 							ok: '关闭'
 						});
 						$mdDialog
 							.show(alert)
 							.finally(function() {
-								$location.path("/admin/list");
+								$location.path("/contact/list");
 							});
 					} else {
 						$mdDialog.show(
 							$mdDialog.alert()
-							.title('用户更新')
+							.title('信息维护更新')
 							.textContent('异常:' + response.msg + "(" + response.code + ")")
-							.ariaLabel('用户更新失败')
+							.ariaLabel('信息维护更新失败')
 							.ok('关闭')
 						);
 					}
@@ -85,5 +95,5 @@ define(['angular'], function(angular) {
 		};
 
 	});
-	return adminEdit;
+	return contactEdit;
 });
