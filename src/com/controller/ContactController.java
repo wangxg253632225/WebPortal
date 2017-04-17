@@ -43,6 +43,21 @@ public class ContactController extends Controller {
         renderJson(new JsonResult("success", null, "0", ContactDao.contactDao.detail(), null));
     }
 
+
+    /**
+     * 查询联系人信息
+     */
+    public void getDetail() {
+        long id = getParaToLong("id");
+        if (StringUtils.isEmpty(id)) {
+            throw new ServiceException("查询联系人ID不能为空");
+        }
+        ContactDao contact = ContactDao.contactDao.findById(id);
+        renderJson(new JsonResult("success", null, "0", contact, null));
+    }
+
+
+
     /**
      * 更新信息维护
      */
